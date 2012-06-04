@@ -1,0 +1,16 @@
+{
+  /* First Servlet (HTTP) configuration
+   *
+   * NOTE: can override with sys params: "-Ddw.http.port=8080" etc
+   */
+
+  "http" : {
+    "port" : 9090
+    ,"adminPort" : 9091
+    ,"gzip" : { // No automated gzip; we'll handle it explicitly as need be
+      "enabled" : false
+    }
+    // default is 200 seconds, lower a bit, don't want to be a connection hog... :)
+    ,"maxIdleTime" : "30 seconds"
+  }
+}
