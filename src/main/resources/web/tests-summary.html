@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+	<title>Test Results</title>
+  
+	<link rel="stylesheet" href="scripts/bootstrap/css/bootstrap.css"/>
+	
+	<!-- For Accordion -->
+	<script type="text/javascript" src="scripts/jquery-1.7.2.min.js"></script> 
+	<script type="text/javascript" src="scripts/jquery-ui-1.8.21.custom/js/jquery-ui-1.8.21.custom.min.js"></script> 
+	
+	<!-- For DataTables -->
+	<link rel="stylesheet" type="text/css" href="scripts/DataTables-1.9.1/DT_bootstrap.css"/>
+	<script type="text/javascript" src="scripts/DataTables-1.9.1/media/js/jquery.dataTables.js"></script>
+	<script type="text/javascript" src="scripts/DataTables-1.9.1/DT_bootstrap.js"></script>
+	
+	<script type="text/javascript" charset="utf-8">
+				/* Default class modification */
+				$.extend( $.fn.dataTableExt.oStdClasses, {
+					"sSortAsc": "header headerSortDown",
+					"sSortDesc": "header headerSortUp",
+					"sSortable": "header"
+				} );
+
+				/* Table initialisation {"sDom": "<'row'<'span8'l><'span8'f>r>t<'row'<'span8'i><'span8'p>>"}*/
+				$(document).ready(function() {
+					$('#failedTests').dataTable( {"sPaginationType": "bootstrap" });
+				} );
+	</script>
+	
+	<script >
+		$(function() {
+			$("#accordion").accordion({"event" : "mouseover"});
+		});
+	</script> 	
+</head>
+
+<body>
+	<div>
+		<h1>Bootstrapped!</h1>
+	<div>
+	
+	<div class="container-fluid">
+  		<div class="row-fluid">
+			<!--  style="background-color: silver" add below to see outline of sidebar-->
+    		<div class="span2">
+      			<!--Sidebar content-->
+
+
+				<div id="accordion" class="well">
+					<h3><a href="#">Run 1</a></h3>
+					<div>
+						<ul>
+							<li>Overview</li>
+							<li>Test results</li>
+							<li>Code coverage</li>
+						</ul>
+					</div>
+					<h3><a href="#">Run 2</a></h3>
+					<div>
+						<ul>
+							<li>Overview</li>
+							<li>Test results</li>
+							<li>Code coverage</li>
+						</ul>
+					</div>
+					<h3><a href="#">Run 3</a></h3>
+					<div>
+						<ul>
+							<li>Overview</li>
+							<li>Test results</li>
+							<li>Code coverage</li>
+						</ul>
+					</div>
+					<h3><a href="#">Run 4</a></h3>
+					<div>
+						<ul>
+							<li>Overview</li>
+							<li>Test results</li>
+							<li>Code coverage</li>
+						</ul>
+					</div>
+				</div>
+    		</div>
+    
+    		<div class="span10" style="background-color:">
+				<!--Body content-->
+    
+      			<!-- <#assign seq = ${failedTests}> -->
+      			<p id="failedTestHead"><h3> Failed Tests </h3></p>
+      				<table id="failedTests" class="table table-condensed table-bordered table-striped"> 
+            			<thead> 
+                			<tr> 
+                				<th>Test Name</th> 
+                				<th>Package/Suite Name</th> 
+                				<th>Since Change</th> 
+                				<th>Bug/Failure Owner</th> 
+                				<th>Duration</th> 
+                			</tr> 
+            			</thead> 
+
+           	 			<tbody> 
+           	 				<!-- <#list seq as test> -->
+           	 					<tr>
+           	 						<td>${test.name}</td>
+           	 						<td>${test.package}</td>
+           	 						<td>${test.since_change}</td>
+           	 						<td>${test.failure_owner}</td>
+           	 						<td>${test.duration}</td>
+           	 					</tr>
+           	 					<tr>
+           	 						<td>${test.name2}</td>
+           	 						<td>${test.package2}</td>
+           	 						<td>${test.since_change2}</td>
+           	 						<td>${test.failure_owner2}</td>
+           	 						<td>${test.duration2}</td>
+           	 					</tr>
+								<tr>
+           	 						<td>${test.name3}</td>
+           	 						<td>${test.package2}</td>
+           	 						<td>${test.since_change2}</td>
+           	 						<td>${test.failure_owner2}</td>
+           	 						<td>${test.duration2}</td>
+           	 					</tr>
+								<tr>
+           	 						<td>${test.name4}</td>
+           	 						<td>${test.package2}</td>
+           	 						<td>${test.since_change2}</td>
+           	 						<td>${test.failure_owner2}</td>
+           	 						<td>${test.duration2}</td>
+           	 					</tr>
+								<tr>
+           	 						<td>${test.name5}</td>
+           	 						<td>${test.package2}</td>
+           	 						<td>${test.since_change2}</td>
+           	 						<td>${test.failure_owner2}</td>
+           	 						<td>${test.duration2}</td>
+           	 					</tr>
+								<tr>
+           	 						<td>${test.name6}</td>
+           	 						<td>${test.package2}</td>
+           	 						<td>${test.since_change2}</td>
+           	 						<td>${test.failure_owner2}</td>
+           	 						<td>${test.duration2}</td>
+           	 					</tr>
+								<tr>
+           	 						<td>${test.name7}</td>
+           	 						<td>${test.package2}</td>
+           	 						<td>${test.since_change2}</td>
+           	 						<td>${test.failure_owner2}</td>
+           	 						<td>${test.duration2}</td>
+           	 					</tr>
+								<tr>
+           	 						<td>${test.name8}</td>
+           	 						<td>${test.package2}</td>
+           	 						<td>${test.since_change2}</td>
+           	 						<td>${test.failure_owner2}</td>
+           	 						<td>${test.duration2}</td>
+           	 					</tr>
+								<tr>
+           	 						<td>${test.name9}</td>
+           	 						<td>${test.package2}</td>
+           	 						<td>${test.since_change2}</td>
+           	 						<td>${test.failure_owner2}</td>
+           	 						<td>${test.duration2}</td>
+           	 					</tr>
+								<tr>
+           	 						<td>${test.name2}</td>
+           	 						<td>${test.package2}</td>
+           	 						<td>${test.since_change2}</td>
+           	 						<td>${test.failure_owner2}</td>
+           	 						<td>${test.duration2}</td>
+           	 					</tr>
+								<tr>
+           	 						<td>${test.name2}</td>
+           	 						<td>${test.package2}</td>
+           	 						<td>${test.since_change2}</td>
+           	 						<td>${test.failure_owner2}</td>
+           	 						<td>${test.duration2}</td>
+           	 					</tr>
+           	 				 <!-- </#list> -->
+            			</tbody> 
+    				</table> 
+    		</div>
+		</div>
+	</div>
+</body>
+</html>
