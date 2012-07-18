@@ -13,32 +13,31 @@
 // limitations under the License.
 package com.force.taas.qf;
 
-import org.glassfish.grizzly.http.server.HttpServer;
+import static org.junit.Assert.assertEquals;
 
-import com.sun.jersey.core.header.MediaTypes;
+import java.io.IOException;
+
+import org.glassfish.grizzly.http.server.HttpServer;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import com.force.taas.qf.model.TestResult;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
-import junit.framework.TestCase;
 
 /**
  * 
  * @author gwester
  *
  */
-public class MainTest extends TestCase {
+public class JerseyApiClientTest {
 
     private HttpServer httpServer;
-    
     private WebResource r;
 
-    public MainTest(String testName) {
-        super(testName);
-    }
-
-    @Override
-    protected void setUp() throws Exception {
-        super.setUp();
-        
+    @Before
+    public void setUp() throws IOException {
         //start the Grizzly2 web container 
         httpServer = WebServer.startServer();
 
@@ -47,19 +46,20 @@ public class MainTest extends TestCase {
         r = c.resource(WebServer.BASE_URI);
     }
 
-    @Override
-    protected void tearDown() throws Exception {
-        super.tearDown();
-
+    @After
+    public void tearDown() {
         httpServer.stop();
+        httpServer = null;
+        r = null;
     }
 
     /**
      * Test to see that the message "Got it!" is sent in the response.
      */
-    public void testBucketExists() {
-        String responseMsg = r.path("tests").get(String.class);
-        assertEquals("prodtest", responseMsg);
+    @Test
+    public void testJsonMessage() {
+        TestResult result = r.path("tests").queryParam("testClass", "common.api").get(TestResult.class);
+        assertEquals("Check for run time", 0, result.runTimeInMillis);
     }
 
 }
