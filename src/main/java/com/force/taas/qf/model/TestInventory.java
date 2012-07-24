@@ -14,6 +14,7 @@
 package com.force.taas.qf.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.*; 
 
 /**
  * 
@@ -28,15 +29,18 @@ public class TestInventory {
 	public String packageName; 
 	public String[] testResults; 
 	
+	private String key; 
+	
 	public TestInventory() { }
 
 	public TestInventory(String id, String testName, String className, String packageName,
 			String[] testResults) {
-		this.id = id;
+		
+		this.id = id; 
 		this.testName = testName;
 		this.className = className;
 		this.packageName = packageName; 
-		this.testResults = testResults; 
+		this.testResults = testResults;
 	}
 
 	@Override
@@ -49,7 +53,7 @@ public class TestInventory {
 				+ ((packageName == null) ? 0 : packageName.hashCode());
 		result = prime * result
 				+ ((testName == null) ? 0 : testName.hashCode());
-		return result;
+		return result; 
 	}
 
 	@Override
@@ -58,28 +62,31 @@ public class TestInventory {
 			return true;
 		if (obj == null)
 			return false;
-		if (getClass() != obj.getClass())
+		if (this.getClass() != obj.getClass())
 			return false;
-		TestResult other = (TestResult) obj;
-		if (className == null) {
+		TestInventory other = (TestInventory) obj;
+		if (this.className == null) {
 			if (other.className != null)
 				return false;
-		} else if (!className.equals(other.className))
+		} else if (!this.className.equals(other.className))
 			return false;
-		if (packageName == null) {
+		if (this.packageName == null) {
 			if (other.packageName != null)
 				return false;
-		} else if (!packageName.equals(other.packageName))
+		} else if (!this.packageName.equals(other.packageName))
 			return false;
-		if (testName == null) {
+		if (this.testName == null) {
 			if (other.testName != null)
 				return false;
-		} else if (!testName.equals(other.testName))
+		} else if (!this.testName.equals(other.testName))
 			return false;
 		return true;
 	}
 
+	@XmlElement
 	public String getKey() {
-		return String.valueOf(hashCode());
+		key = String.valueOf(hashCode()); 
+		return key;
 	}
+
 }

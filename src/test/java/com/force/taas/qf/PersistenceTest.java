@@ -29,7 +29,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.force.taas.qf.model.TestResult;
+import com.force.taas.qf.model.TestInventory;
 import com.force.taas.qf.model.TestStatusEnum;
 
 public class PersistenceTest {
@@ -48,9 +48,8 @@ public class PersistenceTest {
 
 	@Test
 	public void testPutInDb() throws Exception {
-		TestResult recentResult = new TestResult(TestStatusEnum.SUCCESS, new Date(System.currentTimeMillis()),
-				0, "MyTestClazz", "myTest",
-				"`T`Loglines");
+		TestInventory recentResult = new TestInventory(null, "testName", "className",
+				"packageName", null);
 		
 		HttpClient client = new DefaultHttpClient();
 		URIBuilder builder = new URIBuilder();
@@ -60,7 +59,7 @@ public class PersistenceTest {
 		request.setHeader("Content-Type", "application/json");
 		request.setHeader("Accept", "application/json");
 		
-		JAXBContext jc = JAXBContext.newInstance(TestResult.class);
+		JAXBContext jc = JAXBContext.newInstance(TestInventory.class);
 		Marshaller marshaller = jc.createMarshaller();
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
         StringWriter writer = new StringWriter();

@@ -24,10 +24,10 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlRootElement
 public class TestResult {
-	String testInventoryID;
-	String buildTestID;
+	public String testInventoryID;
+	public String buildTestID;
 	public TestStatusEnum status;
-	String[] testMessages;
+	public String[] testMessages;
 	public Date startGMT;
 	public Date endGMT;
 

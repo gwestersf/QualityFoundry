@@ -23,7 +23,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.force.taas.qf.PersistenceService;
-import com.force.taas.qf.model.TestResult;
+import com.force.taas.qf.model.TestInventory;
 
 /**
  * 
@@ -36,17 +36,18 @@ public class TestResource {
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     @PathParam("{packageName}/{className}/{testName}")
-    public TestResult doGetByFullTestName(@PathParam("packageName") String packageName,
+    public TestInventory doGetByFullTestName(@PathParam("packageName") String packageName,
     		@PathParam("className") String className,
     		@PathParam("testName") String testName) throws Exception {
     	
-    	return new TestResult();
+    	return new TestInventory();
     }
     
     @PUT
     @Consumes({MediaType.APPLICATION_JSON})
-    public Response doPut(TestResult testResult) throws Exception {
-    	PersistenceService.getBucket().store(testResult.getKey(), testResult).execute();
+    public Response doPut(TestInventory testInventory) throws Exception {
+    	PersistenceService.getBucket().store(testInventory.getKey(), testInventory).execute();
+		//PersistenceService.getBucket().store("456789", testInventory).execute();
     	return Response.status(204).build();
     }
     

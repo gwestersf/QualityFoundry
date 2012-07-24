@@ -22,7 +22,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.force.taas.qf.model.TestResult;
+import com.force.taas.qf.model.TestInventory;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
 
@@ -58,8 +58,8 @@ public class JerseyApiClientTest {
      */
     @Test
     public void testJsonMessage() {
-        TestResult result = r.path("tests").queryParam("testClass", "common.api").get(TestResult.class);
-        assertEquals("Check for run time", 0, result.runTimeInMillis);
+        TestInventory result = r.path("tests").queryParam("testClass", "common.api").get(TestInventory.class);
+        assertEquals("Check for testName", null, result.testName);
     }
 
 }
