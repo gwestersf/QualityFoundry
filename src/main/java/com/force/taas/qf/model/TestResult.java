@@ -15,6 +15,7 @@ package com.force.taas.qf.model;
 
 import java.util.Date;
 
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -30,9 +31,12 @@ public class TestResult {
 	public String[] testMessages;
 	public Date startGMT;
 	public Date endGMT;
+	private String key; 
 
 	
-	public TestResult() { }
+	public TestResult() {
+		key = String.valueOf(hashCode()); 
+	}
 
 	public TestResult(String testInventoryID, String buildTestID, TestStatusEnum status, 
 			String[] testMessages, Date startGMT, Date endGMT) {
@@ -42,5 +46,44 @@ public class TestResult {
 		this.testMessages = testMessages;
 		this.startGMT = startGMT;
 		this.endGMT = endGMT;
+		key = String.valueOf(hashCode());
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((buildTestID == null) ? 0 : buildTestID.hashCode());
+		result = prime * result
+				+ ((testInventoryID == null) ? 0 : testInventoryID.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		TestResult other = (TestResult) obj;
+		if (buildTestID == null) {
+			if (other.buildTestID != null)
+				return false;
+		} else if (!buildTestID.equals(other.buildTestID))
+			return false;
+		if (testInventoryID == null) {
+			if (other.testInventoryID != null)
+				return false;
+		} else if (!testInventoryID.equals(other.testInventoryID))
+			return false;
+		return true;
+	}
+	
+	@XmlElement
+	public String getKey() {
+		return key;
 	}
 }

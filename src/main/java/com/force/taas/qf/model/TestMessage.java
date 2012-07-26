@@ -13,6 +13,7 @@
 // limitations under the License.
 package com.force.taas.qf.model;
 
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -22,15 +23,53 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlRootElement
 public class TestMessage {
-	public String id;
+	public String testResultID; 
 	public MessageTypeEnum type;
 	public String message; 
+	private String key; 
 	
-	public TestMessage() { }
+	public TestMessage() {
+		key = String.valueOf(hashCode()); 
+	}
 
-	public TestMessage(String id, MessageTypeEnum type, String message) {
-		this.id = id;
+	public TestMessage(String testResultID, MessageTypeEnum type, String message) {
+		this.testResultID = testResultID; 
 		this.type = type;
 		this.message = message; 
+		key = String.valueOf(hashCode()); 
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((testResultID == null) ? 0 : testResultID.hashCode());
+		result = prime * result + ((type == null) ? 0 : type.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		TestMessage other = (TestMessage) obj;
+		if (testResultID == null) {
+			if (other.testResultID != null)
+				return false;
+		} else if (!testResultID.equals(other.testResultID))
+			return false;
+		if (type != other.type)
+			return false;
+		return true;
+	}
+	
+	@XmlElement
+	public String getKey() {
+		return key;
 	}
 }

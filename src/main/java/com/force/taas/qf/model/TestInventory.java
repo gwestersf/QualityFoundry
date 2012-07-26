@@ -23,24 +23,24 @@ import javax.xml.bind.annotation.*;
  */
 @XmlRootElement
 public class TestInventory {
-	public String id;
+	public String id; 
 	public String testName;
 	public String className; 
 	public String packageName; 
 	public String[] testResults; 
+	private String key;
 	
-	private String key; 
-	
-	public TestInventory() { }
+	public TestInventory() {
+		key = String.valueOf(hashCode()); 
+	}
 
-	public TestInventory(String id, String testName, String className, String packageName,
-			String[] testResults) {
-		
-		this.id = id; 
+	public TestInventory(String testName, String className, String packageName,
+			String[] testResults) { 
 		this.testName = testName;
 		this.className = className;
 		this.packageName = packageName; 
 		this.testResults = testResults;
+		key = String.valueOf(hashCode()); 
 	}
 
 	@Override
@@ -62,30 +62,29 @@ public class TestInventory {
 			return true;
 		if (obj == null)
 			return false;
-		if (this.getClass() != obj.getClass())
+		if (getClass() != obj.getClass())
 			return false;
 		TestInventory other = (TestInventory) obj;
-		if (this.className == null) {
+		if (className == null) {
 			if (other.className != null)
 				return false;
-		} else if (!this.className.equals(other.className))
+		} else if (!className.equals(other.className))
 			return false;
-		if (this.packageName == null) {
+		if (packageName == null) {
 			if (other.packageName != null)
 				return false;
-		} else if (!this.packageName.equals(other.packageName))
+		} else if (!packageName.equals(other.packageName))
 			return false;
-		if (this.testName == null) {
+		if (testName == null) {
 			if (other.testName != null)
 				return false;
-		} else if (!this.testName.equals(other.testName))
+		} else if (!testName.equals(other.testName))
 			return false;
 		return true;
 	}
 
 	@XmlElement
 	public String getKey() {
-		key = String.valueOf(hashCode()); 
 		return key;
 	}
 

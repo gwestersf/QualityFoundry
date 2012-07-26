@@ -13,6 +13,9 @@
 // limitations under the License.
 package com.force.taas.qf.model;
 
+import java.util.Arrays;
+
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -24,11 +27,48 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class BuildHistory {
 	public String appName;
 	public String[] buildTests;
+	private String key; 
 	
-	public BuildHistory() { }
+	public BuildHistory() { 
+		key = String.valueOf(hashCode()); 
+	}
 
 	public BuildHistory(String appName, String[] buildTests) {
 		this.appName = appName;
 		this.buildTests = buildTests;
+		key = String.valueOf(hashCode()); 
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((appName == null) ? 0 : appName.hashCode());
+		result = prime * result + Arrays.hashCode(buildTests);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		BuildHistory other = (BuildHistory) obj;
+		if (appName == null) {
+			if (other.appName != null)
+				return false;
+		} else if (!appName.equals(other.appName))
+			return false;
+		if (!Arrays.equals(buildTests, other.buildTests))
+			return false;
+		return true;
+	}
+	
+	@XmlElement
+	public String getKey() {
+		return key;
 	}
 }
