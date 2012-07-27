@@ -48,7 +48,7 @@ public class PersistenceTest {
 
 	@Test
 	public void testPutInDb() throws Exception {
-		TestInventory recentResult = new TestInventory(null, "testName", "className",
+		TestInventory recentResult = new TestInventory("testName", "className",
 				"packageName", null);
 		
 		HttpClient client = new DefaultHttpClient();
