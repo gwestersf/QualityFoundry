@@ -13,7 +13,8 @@
 // limitations under the License.
 package com.force.taas.qf.model;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import java.util.Arrays;
+
 import javax.xml.bind.annotation.*; 
 
 /**
@@ -23,11 +24,10 @@ import javax.xml.bind.annotation.*;
  */
 @XmlRootElement
 public class TestInventory {
-	public String id; 
 	public String testName;
 	public String className; 
 	public String packageName; 
-	public String[] testResults; 
+	public String[] testResultKeys; 
 	private String key;
 	
 	public TestInventory() {
@@ -35,12 +35,12 @@ public class TestInventory {
 	}
 
 	public TestInventory(String testName, String className, String packageName,
-			String[] testResults) { 
+			String[] testResultKeys) { 
 		this.testName = testName;
 		this.className = className;
 		this.packageName = packageName; 
-		this.testResults = testResults;
-		key = String.valueOf(hashCode()); 
+		this.testResultKeys = testResultKeys;
+		key = String.valueOf(hashCode());  
 	}
 
 	@Override
@@ -81,6 +81,18 @@ public class TestInventory {
 		} else if (!testName.equals(other.testName))
 			return false;
 		return true;
+	}
+	
+
+	@Override
+	public String toString() {
+		return "TestInventory [id=" + id + ", testName=" + testName
+				+ ", className=" + className + ", packageName=" + packageName
+				+ ", testResultKeys=" + Arrays.toString(testResultKeys)
+				+ ", testResults=" + Arrays.toString(testResults) + ", key="
+				+ key + ", hashCode()=" + hashCode() + ", getKey()=" + getKey()
+				+ ", getClass()=" + getClass() + ", toString()="
+				+ super.toString() + "]";
 	}
 
 	@XmlElement

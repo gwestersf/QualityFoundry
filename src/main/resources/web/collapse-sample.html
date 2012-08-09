@@ -1,0 +1,291 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+
+<html style="">
+<head>
+	<title>Test Inventory</title>
+  
+	<link rel="stylesheet" href="scripts/bootstrap/css/bootstrap.css"/>
+	<link rel="stylesheet" href="quality-foundry.css" type="text/css"/>
+	
+	<!-- For Accordion -->
+	<script type="text/javascript" src="scripts/jquery-1.7.2.min.js"></script> 
+	<script type="text/javascript">
+	$(document).ready(function(){
+
+		//start with collapsed
+		$(".package_list .package_content").hide();
+		
+		//toggle package
+		$(".icon-resize-vertical").click(function(){
+			$(this).next(".package_content").slideToggle(500)
+			return false;
+		});
+		
+		//toggle class
+		$(".icon-resize-vertical").click(function(){
+			$(this).next(".class_content").slideToggle(500)
+			return false;
+		});
+
+		//collapse all packages
+		$(".collapse_all_packages").click(function(){
+			$(".package_content").slideUp(500)
+			return false;
+		});
+		
+		//expand all packages
+		$(".expand_all_packages").click(function(){
+			$(".package_content").slideDown(500)
+			return false;
+		});
+	});
+	
+	function collapsePackages(){
+		$(".package_content").slideUp(300)
+		return false;
+	}
+	
+	function expandPackages(){
+		$(".package_content").slideDown(300)
+		return false;
+	}
+	
+	function selectAll(){
+		boxes = document.getElementsByName('checkbox')
+		for(var i in boxes)
+			boxes[i].checked = "checked";
+			boxes[i].indeterminate = false; 
+	}
+	
+	function unselectAll(){
+		packages = document.getElementsByName('checkbox')
+		for(var i in packages)
+			packages[i].checked = false;
+	}
+	
+	</script>
+	
+	
+	<!-- from http://css-tricks.com/indeterminate-checkboxes/ -->
+	
+	<script>
+  	$(function() {
+      $('input[type="checkbox"]').change(function(e) {
+      var checked = $(this).prop("checked"),
+          container = $(this).parent(),
+          siblings = container.siblings();
+  
+      container.find('input[type="checkbox"]').prop({
+          indeterminate: false,
+          checked: checked
+      });
+  
+      function checkSiblings(el) {
+          var parent = el.parent().parent(),
+              all = true;
+  
+          el.siblings().each(function() {
+              return all = ($(this).children('input[type="checkbox"]').prop("checked") === checked);
+          });
+  
+          if (all && checked) {
+              parent.children('input[type="checkbox"]').prop({
+                  indeterminate: false,
+                  checked: checked
+              });
+              checkSiblings(parent);
+          } else if (all && !checked) {
+              parent.children('input[type="checkbox"]').prop("checked", checked);
+              parent.children('input[type="checkbox"]').prop("indeterminate", (parent.find('input[type="checkbox"]:checked').length > 0));
+              checkSiblings(parent);
+          } else {
+              el.parents("li").children('input[type="checkbox"]').prop({
+                  indeterminate: true,
+                  checked: false
+              });
+          }
+        }
+    
+        checkSiblings(container);
+      });
+    });
+    </script>
+
+
+	<style type="text/css">
+
+
+
+	.package_list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	
+	.package_list header{
+		font-weight: bold;
+		background-color:red;
+	}
+	.class_list {
+		list-style: none;
+		padding: 0;
+	}
+	.test_list {
+		list-style: none;
+		padding: 0;
+	}
+	.package_head {
+		padding: 0px 10px;
+		cursor: pointer;
+		position: relative;
+	}
+
+	.package_content {
+		padding: 5px 10px 15px;
+	}
+	.class_content {
+		padding: 5px 10px 15px;
+	}
+
+	
+
+	
+	</style>
+
+</head>
+
+<body class="qf-page-background">
+	<div class="qf-header">
+
+		<img src="imgs/logo.png" class="qf-logo" height="80" width="140"/>
+		
+	</div>
+	<div class="container-fluid qf-container">
+  		
+		<div class="row-fluid">   
+    		<div class="span12 qf-content-nosidebar" id="content">
+				
+				
+			<div style="text-align: right;
+				border-bottom: solid 1px #e4e4e4;
+				padding: 5px 0;
+				margin-bottom: 10px;
+				width: 383px;">
+				<button class="btn btn-mini" onclick="selectAll()">
+					Select all
+				</button>
+		
+				<button class="btn btn-mini" onclick="unselectAll()">
+					Unselect all 
+				</button>
+		
+				<button class="btn btn-mini" onclick="collapsePackages()">
+				  Collapse packages
+				</button>
+
+				<button class="btn btn-mini" onclick="expandPackages()">
+				  Expand packages
+				</button>	
+			</div>
+				
+				<ol class="package_list">
+			
+					
+					
+					<li style="background-color:zred">
+						<input type="checkbox" name="checkbox">
+						Package Name 
+						<i class="icon-resize-vertical" ></i>
+						
+						<div class="package_content">
+							<ol class="class_list">
+								<li style="background-color:zblue">
+									<input type="checkbox" name="checkbox"> 
+									class one	
+									<i class="icon-resize-vertical" ></i>
+									
+									<div class="class_content">
+										<ol class="test_list">
+											<li><input type="checkbox" name="checkbox"> test one
+											<li><input type="checkbox" name="checkbox"> test two
+										</ol>
+									</div>
+								<li>
+									<input type="checkbox" name="checkbox"> 
+									class two
+									<i class="icon-resize-vertical" ></i>
+									
+									<div class="class_content">
+										<ol class="test_list">
+											<li><input type="checkbox" name="checkbox"> test one
+											<li><input type="checkbox" name="checkbox"> test two
+										</ol>
+									</div>
+							</ol>
+						</div>
+					</li>
+					
+					
+					
+					<li>
+						<input type="checkbox" name="checkbox">
+						 Package name2 <i class="icon-resize-vertical" ></i>
+						<div class="package_content">
+								<ol class="class_list">
+									<li>
+										<input type="checkbox" name="checkbox"> 
+										class one	
+										<i class="icon-resize-vertical" ></i>
+
+										<div class="class_content">
+											<ol class="test_list">
+												<li><input type="checkbox" name="checkbox"> test one
+												<li><input type="checkbox" name="checkbox"> test two
+											</ol>
+										</div>
+									<li>
+										<input type="checkbox" name="checkbox"> 
+										class two
+										<i class="icon-resize-vertical" ></i>
+										
+										
+										<div class="class_content">
+											<ol class="test_list">
+												<li><input type="checkbox" name="checkbox"> test one
+												<li><input type="checkbox" name="checkbox"> test two
+											</ol>
+										</div>
+								</ol>
+						</div>
+					</li>
+					
+					<li>
+						<input type="checkbox" name="checkbox">
+						 Package name <i class="icon-resize-vertical" ></i>
+						<div class="package_content">
+								<ol class="class_list">
+									<li>
+										<input type="checkbox" name="checkbox"> 
+										class one	
+										<i class="icon-resize-vertical" ></i>
+
+										<div class="class_content">
+											<ol class="test_list">
+												<li><input type="checkbox" name="checkbox"> test one
+												<li><input type="checkbox" name="checkbox"> test two
+											</ol>
+										</div>
+									<li>
+										<input type="checkbox" name="checkbox"> 
+										class two
+										<i class="icon-resize-vertical" ></i>
+								</ol>
+						</div>
+					</li>
+
+				</ol>
+		</div>
+	</div>
+</body>
+</html>

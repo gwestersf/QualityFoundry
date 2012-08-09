@@ -69,6 +69,14 @@
 	box-shadow: inset 3px 0px 3px #888;
 }
 
+.qf-content-nosidebar{
+	background-color:white; 
+	padding:15px; 
+	margin:0px; 
+	border-radius:15px; 
+	border-radius:15px;
+}
+
 .qf-sidebar {
 	background-color:transparent; 
 	

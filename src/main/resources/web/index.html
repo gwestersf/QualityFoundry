@@ -1,0 +1,372 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+
+<html style="">
+<head>
+	<title>Quality Foundry</title>
+  
+	<link rel="stylesheet" href="scripts/bootstrap/css/bootstrap.css"/>
+	<link rel="stylesheet" href="quality-foundry.css" type="text/css"/>
+	
+	<!-- For Accordion -->
+	<script type="text/javascript" src="scripts/jquery-1.7.2.min.js"></script> 
+	<script type="text/javascript" src="scripts/jquery-ui-1.8.21.custom/js/jquery-ui-1.8.21.custom.min.js"></script> 
+	<script >
+		$(function() {			
+			$("#accordion").accordion({
+				event : "mouseover",
+				active: false, 	
+				fillspace: true	
+			});
+		});
+	</script>
+	<!-- DataTables -->
+	<link rel="stylesheet" type="text/css" href="scripts/DataTables-1.9.1/DT_bootstrap.css"/>
+	<script type="text/javascript" src="scripts/DataTables-1.9.1/media/js/jquery.dataTables.js"></script>
+	<script type="text/javascript" src="scripts/DataTables-1.9.1/DT_bootstrap.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		/* Default class modification */
+		$.extend( $.fn.dataTableExt.oStdClasses, {
+			"sSortAsc": "header headerSortDown",
+			"sSortDesc": "header headerSortUp",
+			"sSortable": "header"
+		} );
+		$(document).ready(function() {
+			$('#appTable').dataTable( {"bPaginate": false, "bFilter": false});
+			$('#appTable2').dataTable( {"bPaginate": false, "bFilter": false});
+			$('#appTable3').dataTable( {"bPaginate": false, "bFilter": false});
+		} );
+	</script>
+	<!-- Typeahead -->
+	<script type="text/javascript" src="scripts/bootstrap/bootstrap-typeahead.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+	    	var alCities = ['example package', 'test name', 'class name', 'john doveloper', 'John doveloper'].sort();
+	        $('#global-search').typeahead({source: alCities, items:5});
+		});
+	</script>
+</head>
+
+<body class="qf-page-background">
+	<div class="qf-header">
+
+		<img src="imgs/logo.png" class="qf-logo" height="80" width="140"/>
+		
+		<form class="form-search qf-search">
+	  		<input type="text" id="global-search" data-provide="typeahead" class="search-query" placeholder="Search all">
+	  		<button type="submit" class="btn"> <i class="icon-search"></i> Search</button>
+		</form>
+	</div>
+	<!--   #aaccdd  #888 #615A5A-->
+	<div class="container-fluid qf-container">
+  		
+		<div class="row-fluid">
+
+
+    		<div class="span12 qf-content-nosidebar" id="content">
+				<!--Body content-->
+    
+				<ul class="breadcrumb">
+					<li>
+						${run.name}
+						<span class="divider">|</span>
+					</li>
+						
+				 	<li class="active">Test Results</li>
+				</ul>
+
+					<a name="appTableHeader"></a> 
+					<h2> SomeAppName 
+						<a class="btn btn-info" style="float: right; text-align:center">  
+							<i class="icon-plus-sign icon-white"></i> New build
+						</a>
+					</h2><br/>
+	      				<table id="appTable" class="table table-condensed table-bordered table-striped"> 
+	            			<thead> 
+	                			<tr> 
+									<th>Status</th>
+									<th>Build</th> 
+	                				<th>Triggered By</th> 
+	                				<th>Owner</th> 
+	                				<th>Start</th> 
+	                				<th>End</th> 
+									<th>Failed</th>
+									<th>Flapping</th>
+									<th>Passed</th>
+	
+	                			</tr> 
+	            			</thead> 
+
+	           	 			<tbody> 
+									<tr>
+										<td width="40px" style="text-align:center"><i class="icon-refresh"></i></td>
+	           	 						<td width="40px" style="text-align:center">#7</td>
+	           	 						<td>Scheduled</td>
+	           	 						<td>jdoe</td>
+	           	 						<td>10:30 21-03-2012</td>
+										<td>10:30 21-03-2012</td>
+	           	 						<td>20</td>
+										<td>20</td>
+										<td>3</td>
+	           	 					</tr>
+									<tr>
+										<td style="text-align:center" ><i class="icon-ok"></i></td>
+	           	 						<td style="text-align:center">#6</td>
+	           	 						<td>Scheduled</td>
+	           	 						<td>jdoe</td>
+	           	 						<td>10:30 21-03-2012</td>
+										<td>10:30 21-03-2012</td>
+										<td>11</td>
+	           	 						<td>22</td>
+										<td>22</td>
+	           	 					</tr>
+									<tr>
+										<td style="text-align:center"><i class="icon-ok"></i></td>
+	           	 						<td style="text-align:center">#5</td>
+	           	 						<td>jdoe</td>
+	           	 						<td>jdoe</td>
+	           	 						<td>10:30 21-03-2012</td>
+										<td>10:30 21-03-2012</td>
+	           	 						<td>20</td>
+										<td>20</td>
+										<td>20</td>
+	           	 					</tr>
+									<tr>
+										<td style="text-align:center"><i class="icon-ok"></i></td>
+	           	 						<td style="text-align:center">#4</td>
+	           	 						<td>Scheduled</td>
+	           	 						<td>jdoe</td>
+	           	 						<td>10:30 21-03-2012</td>
+										<td>10:30 21-03-2012</td>
+										<td>2</td>
+	           	 						<td>6</td>
+										<td>20</td>
+	           	 					</tr>
+									<tr>
+										<td style="text-align:center"><i class="icon-ok"></i></td>
+	           	 						<td style="text-align:center">#3</td>
+	           	 						<td>jdoe</td>
+	           	 						<td>jdoe</td>
+	           	 						<td>10:30 21-03-2012</td>
+										<td>10:30 21-03-2012</td>
+										<td>20</td>
+										<td>3</td>
+	           	 						<td>10</td>
+	           	 					</tr>
+									<tr>
+										<td style="text-align:center"><i class="icon-ok"></i></td>
+	           	 						<td style="text-align:center">#2</td>
+	           	 						<td>gsmith</td>
+	           	 						<td>gsmith</td>
+	           	 						<td>10:30 21-03-2012</td>
+										<td>10:30 21-03-2012</td>
+										<td>5</td>
+	           	 						<td>20</td>
+										<td>8</td>
+	           	 					</tr>
+									<tr>
+										<td style="text-align:center"><i class="icon-ok"></i></td>
+	           	 						<td style="text-align:center">#1</td>
+	           	 						<td>gsmith</td>
+	           	 						<td>gsmith</td>
+										<td>10:30 21-03-2012</td>
+	           	 						<td>10:30 21-03-2012</td>
+										<td>6</td>
+	           	 						<td>20</td>
+										<td>12</td>
+	           	 					</tr>
+	            			</tbody> 
+	    				</table>
+						
+						<br/>
+	
+						<a name="appTableHeader"></a> 
+						<h2> SecondApp 
+							<a class="btn btn-info" style="float: right; text-align:center">  
+								<i class="icon-plus-sign icon-white"></i> New build
+							</a>
+						</h2><br/>
+		      				<table id="appTable2" class="table table-condensed table-bordered table-striped"> 
+		            			<thead> 
+		                			<tr> 
+										<th>Status</th>
+										<th>Build</th> 
+		                				<th>Triggered By</th> 
+		                				<th>Owner</th> 
+		                				<th>Start</th> 
+		                				<th>End</th> 
+										<th>Failed</th>
+										<th>Flapping</th>
+										<th>Passed</th>
+
+		                			</tr> 
+		            			</thead> 
+
+		           	 			<tbody> 
+										<tr>
+											<td width="40px" style="text-align:center"><i class="icon-refresh"></i></td>
+		           	 						<td width="40px" style="text-align:center">#7</td>
+		           	 						<td>Scheduled</td>
+		           	 						<td>jdoe</td>
+		           	 						<td>10:30 21-03-2012</td>
+											<td>10:30 21-03-2012</td>
+		           	 						<td>20</td>
+											<td>20</td>
+											<td>3</td>
+		           	 					</tr>
+										<tr>
+											<td style="text-align:center" ><i class="icon-ok"></i></td>
+		           	 						<td style="text-align:center">#6</td>
+		           	 						<td>Scheduled</td>
+		           	 						<td>jdoe</td>
+		           	 						<td>10:30 21-03-2012</td>
+											<td>10:30 21-03-2012</td>
+											<td>11</td>
+		           	 						<td>22</td>
+											<td>22</td>
+		           	 					</tr>
+										<tr>
+											<td style="text-align:center"><i class="icon-ok"></i></td>
+		           	 						<td style="text-align:center">#5</td>
+		           	 						<td>jdoe</td>
+		           	 						<td>jdoe</td>
+		           	 						<td>10:30 21-03-2012</td>
+											<td>10:30 21-03-2012</td>
+		           	 						<td>20</td>
+											<td>20</td>
+											<td>20</td>
+		           	 					</tr>
+										<tr>
+											<td style="text-align:center"><i class="icon-ok"></i></td>
+		           	 						<td style="text-align:center">#4</td>
+		           	 						<td>Scheduled</td>
+		           	 						<td>jdoe</td>
+		           	 						<td>10:30 21-03-2012</td>
+											<td>10:30 21-03-2012</td>
+											<td>2</td>
+		           	 						<td>6</td>
+											<td>20</td>
+		           	 					</tr>
+										<tr>
+											<td style="text-align:center"><i class="icon-ok"></i></td>
+		           	 						<td style="text-align:center">#3</td>
+		           	 						<td>jdoe</td>
+		           	 						<td>jdoe</td>
+		           	 						<td>10:30 21-03-2012</td>
+											<td>10:30 21-03-2012</td>
+											<td>20</td>
+											<td>3</td>
+		           	 						<td>10</td>
+		           	 					</tr>
+		            			</tbody> 
+		    				</table>
+		
+							<br/>
+		
+							<a name="appTableHeader"></a> 
+							<h2> AnotherApp
+								<a class="btn btn-info" style="float: right; text-align:center">  
+									<i class="icon-plus-sign icon-white"></i> New build
+								</a>
+							</h2><br/>
+			      				<table id="appTable3" class="table table-condensed table-bordered table-striped"> 
+			            			<thead> 
+			                			<tr> 
+											<th>Status</th>
+											<th>Build</th> 
+			                				<th>Triggered By</th> 
+			                				<th>Owner</th> 
+			                				<th>Start</th> 
+			                				<th>End</th> 
+											<th>Failed</th>
+											<th>Flapping</th>
+											<th>Passed</th>
+
+			                			</tr> 
+			            			</thead> 
+
+			           	 			<tbody> 
+											<tr>
+												<td width="40px" style="text-align:center"><i class="icon-refresh"></i></td>
+			           	 						<td width="40px" style="text-align:center">#7</td>
+			           	 						<td>Scheduled</td>
+			           	 						<td>jdoe</td>
+			           	 						<td>10:30 21-03-2012</td>
+												<td>10:30 21-03-2012</td>
+			           	 						<td>20</td>
+												<td>20</td>
+												<td>3</td>
+			           	 					</tr>
+											<tr>
+												<td style="text-align:center" ><i class="icon-ok"></i></td>
+			           	 						<td style="text-align:center">#6</td>
+			           	 						<td>Scheduled</td>
+			           	 						<td>jdoe</td>
+			           	 						<td>10:30 21-03-2012</td>
+												<td>10:30 21-03-2012</td>
+												<td>11</td>
+			           	 						<td>22</td>
+												<td>22</td>
+			           	 					</tr>
+											<tr>
+												<td style="text-align:center"><i class="icon-ok"></i></td>
+			           	 						<td style="text-align:center">#5</td>
+			           	 						<td>jdoe</td>
+			           	 						<td>jdoe</td>
+			           	 						<td>10:30 21-03-2012</td>
+												<td>10:30 21-03-2012</td>
+			           	 						<td>20</td>
+												<td>20</td>
+												<td>20</td>
+			           	 					</tr>
+											<tr>
+												<td style="text-align:center"><i class="icon-ok"></i></td>
+			           	 						<td style="text-align:center">#4</td>
+			           	 						<td>Scheduled</td>
+			           	 						<td>jdoe</td>
+			           	 						<td>10:30 21-03-2012</td>
+												<td>10:30 21-03-2012</td>
+												<td>2</td>
+			           	 						<td>6</td>
+												<td>20</td>
+			           	 					</tr>
+											<tr>
+												<td style="text-align:center"><i class="icon-ok"></i></td>
+			           	 						<td style="text-align:center">#3</td>
+			           	 						<td>jdoe</td>
+			           	 						<td>jdoe</td>
+			           	 						<td>10:30 21-03-2012</td>
+												<td>10:30 21-03-2012</td>
+												<td>20</td>
+												<td>3</td>
+			           	 						<td>10</td>
+			           	 					</tr>
+											<tr>
+												<td style="text-align:center"><i class="icon-ok"></i></td>
+			           	 						<td style="text-align:center">#2</td>
+			           	 						<td>gsmith</td>
+			           	 						<td>gsmith</td>
+			           	 						<td>10:30 21-03-2012</td>
+												<td>10:30 21-03-2012</td>
+												<td>5</td>
+			           	 						<td>20</td>
+												<td>8</td>
+			           	 					</tr>
+											<tr>
+												<td style="text-align:center"><i class="icon-ok"></i></td>
+			           	 						<td style="text-align:center">#1</td>
+			           	 						<td>gsmith</td>
+			           	 						<td>gsmith</td>
+												<td>10:30 21-03-2012</td>
+			           	 						<td>10:30 21-03-2012</td>
+												<td>6</td>
+			           	 						<td>20</td>
+												<td>12</td>
+			           	 					</tr>
+			            			</tbody> 
+			    				</table>
+    		</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -26,16 +26,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class BuildHistory {
 	public String appName;
-	public String[] buildTests;
+	public String[] buildTestKeys;
 	private String key; 
 	
 	public BuildHistory() { 
 		key = String.valueOf(hashCode()); 
 	}
 
-	public BuildHistory(String appName, String[] buildTests) {
+	public BuildHistory(String appName, String[] buildTestKeys) {
 		this.appName = appName;
-		this.buildTests = buildTests;
+		this.buildTestKeys = buildTestKeys;
 		key = String.valueOf(hashCode()); 
 	}
 
@@ -44,7 +44,7 @@ public class BuildHistory {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((appName == null) ? 0 : appName.hashCode());
-		result = prime * result + Arrays.hashCode(buildTests);
+		result = prime * result + Arrays.hashCode(buildTestKeys);
 		return result;
 	}
 
@@ -62,7 +62,7 @@ public class BuildHistory {
 				return false;
 		} else if (!appName.equals(other.appName))
 			return false;
-		if (!Arrays.equals(buildTests, other.buildTests))
+		if (!Arrays.equals(buildTestKeys, other.buildTestKeys))
 			return false;
 		return true;
 	}
