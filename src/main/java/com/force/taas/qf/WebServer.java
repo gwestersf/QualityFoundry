@@ -17,6 +17,8 @@ import com.sun.jersey.api.container.grizzly2.GrizzlyServerFactory;
 import com.sun.jersey.api.core.PackagesResourceConfig;
 import com.sun.jersey.api.core.ResourceConfig;
 import org.glassfish.grizzly.http.server.HttpServer;
+import org.glassfish.grizzly.http.server.ServerConfiguration;
+import org.glassfish.grizzly.http.server.StaticHttpHandler;
 
 import javax.ws.rs.core.UriBuilder;
 import java.io.IOException;
@@ -48,17 +50,25 @@ public class WebServer {
     public static final URI BASE_URI = getBaseURI();
     
     protected static HttpServer startServer() throws IOException {
+    	// add listeners for our REST resources
         ResourceConfig resourceConfig = new PackagesResourceConfig("com.force.taas.qf.resource");
-
-        System.out.println("Starting grizzly2...");
-        return GrizzlyServerFactory.createHttpServer(BASE_URI, resourceConfig);
+        
+        // create the basic server
+        HttpServer server = GrizzlyServerFactory.createHttpServer(BASE_URI, resourceConfig);
+        
+        // we need to serve up our static content too
+        ServerConfiguration serverConfiguration = server.getServerConfiguration();
+        String cwd = System.getProperty("user.dir");
+        String docRootFolder = cwd + "/target/classes/web";
+        serverConfiguration.addHttpHandler(new StaticHttpHandler(docRootFolder), "/static");
+        return server;
     }
     
     public static void main(String[] args) throws IOException {
         // Grizzly 2 initialization
-        HttpServer httpServer = startServer();
-
+        System.out.println("Starting grizzly2...");
+        HttpServer server = startServer();
         System.in.read();
-        httpServer.stop();
+        server.stop();
     }    
 }
