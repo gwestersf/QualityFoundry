@@ -28,7 +28,7 @@ public class TestResult {
 	public String testInventoryID;
 	public String buildTestID;
 	public TestStatusEnum status;
-	public String[] testMessages;
+	public String[] testMessageKeys;
 	public Date startGMT;
 	public Date endGMT;
 	private String key; 
@@ -39,11 +39,11 @@ public class TestResult {
 	}
 
 	public TestResult(String testInventoryID, String buildTestID, TestStatusEnum status, 
-			String[] testMessages, Date startGMT, Date endGMT) {
+			String[] testMessageKeys, Date startGMT, Date endGMT) {
 		this.testInventoryID = testInventoryID;
 		this.buildTestID = buildTestID;
 		this.status = status;
-		this.testMessages = testMessages;
+		this.testMessageKeys = testMessageKeys;
 		this.startGMT = startGMT;
 		this.endGMT = endGMT;
 		key = String.valueOf(hashCode());

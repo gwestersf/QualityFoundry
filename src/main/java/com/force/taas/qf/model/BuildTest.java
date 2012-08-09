@@ -31,7 +31,7 @@ public class BuildTest {
 	public String changelist;
 	public Date startGMT;
 	public Date endGMT;
-	public String[] testResults;
+	public String[] testResultKeys;
 	private String key; 
 	
 	public BuildTest() {
@@ -40,14 +40,14 @@ public class BuildTest {
 
 	public BuildTest(String buildTestID, TriggeredByEnum triggeredBy, BuildOwnerEnum owner, 
 			String changelist, Date startGMT, Date endGMT, 
-			String[] testResults) { 
+			String[] testResultKeys) { 
 		this.buildTestID = buildTestID; 
 		this.triggeredBy = triggeredBy;
 		this.owner = owner;
 		this.changelist = changelist;
 		this.startGMT = startGMT;
 		this.endGMT = endGMT;  
-		this.testResults = testResults; 
+		this.testResultKeys = testResultKeys; 
 		key = String.valueOf(hashCode());
 	}
 

@@ -38,7 +38,7 @@ public class TestMessage {
 		this.message = message; 
 		key = String.valueOf(hashCode()); 
 	}
-
+ 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
