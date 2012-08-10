@@ -31,12 +31,12 @@ import com.force.taas.qf.model.TestInventory;
  *
  */
 @Path("/tests")
-public class TestResource {
+public class TestByNameResource implements QualityFoundryResource {
     
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     @PathParam("{packageName}/{className}/{testName}")
-    public TestInventory doGetByFullTestName(@PathParam("packageName") String packageName,
+    public TestInventory doGet(@PathParam("packageName") String packageName,
     		@PathParam("className") String className,
     		@PathParam("testName") String testName) throws Exception {
     	

@@ -14,6 +14,8 @@
 package com.force.taas.qf.model;
 
 import java.util.Date;
+import java.util.LinkedHashSet;
+import java.util.UUID;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -24,75 +26,42 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  */
 @XmlRootElement
-public class BuildTest {
+public class BuildTest implements QualityFoundryObject {
 	public String buildTestID;
 	public TriggeredByEnum triggeredBy;
 	public BuildOwnerEnum owner;
 	public String changelist;
 	public Date startGMT;
 	public Date endGMT;
-	public String[] testResultKeys;
+	public LinkedHashSet<String> testResultKeys;
 	private String key; 
 	
 	public BuildTest() {
-		key = String.valueOf(hashCode()); 
+		
 	}
 
 	public BuildTest(String buildTestID, TriggeredByEnum triggeredBy, BuildOwnerEnum owner, 
 			String changelist, Date startGMT, Date endGMT, 
-			String[] testResultKeys) { 
+			LinkedHashSet<String> testResultKeys) { 
 		this.buildTestID = buildTestID; 
 		this.triggeredBy = triggeredBy;
 		this.owner = owner;
 		this.changelist = changelist;
 		this.startGMT = startGMT;
 		this.endGMT = endGMT;  
-		this.testResultKeys = testResultKeys; 
-		key = String.valueOf(hashCode());
+		this.testResultKeys = testResultKeys;
 	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result
-				+ ((buildTestID == null) ? 0 : buildTestID.hashCode());
-		result = prime * result
-				+ ((changelist == null) ? 0 : changelist.hashCode());
-		result = prime * result
-				+ ((startGMT == null) ? 0 : startGMT.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		BuildTest other = (BuildTest) obj;
-		if (buildTestID == null) {
-			if (other.buildTestID != null)
-				return false;
-		} else if (!buildTestID.equals(other.buildTestID))
-			return false;
-		if (changelist == null) {
-			if (other.changelist != null)
-				return false;
-		} else if (!changelist.equals(other.changelist))
-			return false;
-		if (startGMT == null) {
-			if (other.startGMT != null)
-				return false;
-		} else if (!startGMT.equals(other.startGMT))
-			return false;
-		return true;
+	
+	public String generateUniqueKey() {
+		return UUID.randomUUID().toString();
 	}
 	
 	@XmlElement
 	public String getKey() {
+		if(buildTestID != null) {
+			return buildTestID;
+		}
+		key = generateUniqueKey();
 		return key;
 	}
 }

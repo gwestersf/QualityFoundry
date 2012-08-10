@@ -14,6 +14,7 @@
 package com.force.taas.qf.model;
 
 import java.util.Arrays;
+import java.util.LinkedHashSet;
 
 import javax.xml.bind.annotation.*; 
 
@@ -23,26 +24,26 @@ import javax.xml.bind.annotation.*;
  *
  */
 @XmlRootElement
-public class TestInventory {
+public class TestInventory implements QualityFoundryObject {
 	public String testName;
 	public String className; 
 	public String packageName; 
-	public String[] testResultKeys; 
+	public LinkedHashSet<String> testResultKeys; 
 	private String key;
 	
 	public TestInventory() {
-		key = String.valueOf(hashCode()); 
+
 	}
 
 	public TestInventory(String testName, String className, String packageName,
-			String[] testResultKeys) { 
+			LinkedHashSet<String> testResultKeys) { 
 		this.testName = testName;
 		this.className = className;
 		this.packageName = packageName; 
 		this.testResultKeys = testResultKeys;
 		key = String.valueOf(hashCode());  
 	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -53,7 +54,7 @@ public class TestInventory {
 				+ ((packageName == null) ? 0 : packageName.hashCode());
 		result = prime * result
 				+ ((testName == null) ? 0 : testName.hashCode());
-		return result; 
+		return result;
 	}
 
 	@Override
@@ -82,21 +83,12 @@ public class TestInventory {
 			return false;
 		return true;
 	}
-	
-
-	@Override
-	public String toString() {
-		return "TestInventory [id=" + id + ", testName=" + testName
-				+ ", className=" + className + ", packageName=" + packageName
-				+ ", testResultKeys=" + Arrays.toString(testResultKeys)
-				+ ", testResults=" + Arrays.toString(testResults) + ", key="
-				+ key + ", hashCode()=" + hashCode() + ", getKey()=" + getKey()
-				+ ", getClass()=" + getClass() + ", toString()="
-				+ super.toString() + "]";
-	}
 
 	@XmlElement
 	public String getKey() {
+		if(key == null) {
+			key = String.valueOf(hashCode()); 
+		}
 		return key;
 	}
 

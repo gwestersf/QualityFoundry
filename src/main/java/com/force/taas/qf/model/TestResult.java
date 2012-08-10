@@ -24,18 +24,21 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  */
 @XmlRootElement
-public class TestResult {
+public class TestResult implements QualityFoundryObject {
 	public String testInventoryID;
 	public String buildTestID;
 	public TestStatusEnum status;
 	public String[] testMessageKeys;
 	public Date startGMT;
 	public Date endGMT;
+	
+	// this is not stored in the database; just here so we can send it back
+	public String simpleName;
 	private String key; 
 
 	
 	public TestResult() {
-		key = String.valueOf(hashCode()); 
+
 	}
 
 	public TestResult(String testInventoryID, String buildTestID, TestStatusEnum status, 
@@ -47,6 +50,10 @@ public class TestResult {
 		this.startGMT = startGMT;
 		this.endGMT = endGMT;
 		key = String.valueOf(hashCode());
+	}
+	
+	public void setSimpleName(String simpleName) {
+		this.simpleName = simpleName;
 	}
 
 	@Override
@@ -84,6 +91,9 @@ public class TestResult {
 	
 	@XmlElement
 	public String getKey() {
+		if(key == null) {
+			key = String.valueOf(hashCode()); 
+		}
 		return key;
 	}
 }

@@ -25,9 +25,7 @@ import com.basho.riak.client.bucket.FetchBucket;
  */
 public class PersistenceService {
 	
-	protected static final String BUCKET_NAME = "prodtest";
-	
 	public static Bucket getBucket() throws RiakException {
-		return RiakFactory.httpClient().fetchBucket(BUCKET_NAME).execute();
+		return RiakFactory.httpClient().fetchBucket(Globals.BUCKET_NAME).execute();
 	}
 }

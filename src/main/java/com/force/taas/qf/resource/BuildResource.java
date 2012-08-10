@@ -13,6 +13,9 @@
 // limitations under the License.
 package com.force.taas.qf.resource;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
@@ -24,8 +27,6 @@ import javax.ws.rs.core.Response;
 
 import com.force.taas.qf.PersistenceService;
 import com.force.taas.qf.model.BuildTest;
-import com.force.taas.qf.model.TestResult;
-import com.force.taas.qf.model.TestInventory;
 import com.force.taas.qf.model.BuildHistory;
 
 /**
@@ -34,54 +35,30 @@ import com.force.taas.qf.model.BuildHistory;
  *
  */
 @Path("/builds")
-public class BuildResource {
-	
+public class BuildResource implements QualityFoundryResource {
+    	   
 	@GET
 	@Produces({MediaType.APPLICATION_JSON})
-	@PathParam("{buildHistoryKey}/{buildKey}")
-	public Object[] doGetBuild(@PathParam("buildHistoryKey") String buildHistoryKey, 
-			@PathParam("buildKey") String buildKey) throws Exception {
-
-		BuildTest thisBuild = (BuildTest) PersistenceService.getBucket().fetch(buildKey).execute();
-	
-		String[] testResultKeys = thisBuild.testResultKeys;
-		int size = testResultKeys.length;
-		TestResult[] testResults = new TestResult[size];
-		TestInventory[] testInventories = new TestInventory[size]; 
+	@PathParam("{applicationName}")
+	public List<BuildTest> doGet(@PathParam("applicationName") String applicationName) throws Exception {
+		BuildHistory buildHistory = PersistenceService.getBucket().fetch(applicationName, BuildHistory.class).execute();
 		
-		for(int i=0; i<size; i++){
-			TestResult tr = (TestResult) PersistenceService.getBucket().fetch(testResultKeys[i]).execute();
-			TestInventory ti = (TestInventory) PersistenceService.getBucket().fetch(tr.testInventoryID).execute();
-			testResults[i] = tr;
-			testInventories[i] = ti; 	
+		List<BuildTest> testRuns = new ArrayList<BuildTest>();
+		for(String key : buildHistory.buildTestKeys) {
+			BuildTest testRun = PersistenceService.getBucket().fetch(key, BuildTest.class).execute();
+			testRun.testResultKeys = null;	// truncate the data
+			testRuns.add(testRun);
 		}
-				
-		Object[] toRet = new Object[4];
-		toRet[0] = thisBuild; 
-		toRet[1] = getBuildHistory(buildHistoryKey);
-		toRet[2] = testResults;
-		toRet[3] = testInventories; 
-		
-		return toRet; 
+		return testRuns;
 	}
-	
-	public BuildTest[] getBuildHistory(String buildHistoryKey) throws Exception {
-	    	
-		BuildHistory bh = (BuildHistory) PersistenceService.getBucket().fetch(buildHistoryKey).execute();
-		BuildTest[] buildTests = new BuildTest[bh.buildTestKeys.length]; 
-		for(int i = 0; i < buildTests.length; i++){
-			buildTests[i] = PersistenceService.getBucket().fetch(bh.buildTestKeys[i], BuildTest.class).execute();
-		}
-		
-		return buildTests; 
-	}
-	
+	    
 	@PUT
 	@Consumes({MediaType.APPLICATION_JSON})
-	public Response doPut(BuildTest buildTest) throws Exception {
-		PersistenceService.getBucket().store(buildTest.getKey(), buildTest).execute();
+	public Response doPut(BuildHistory buildHistory) throws Exception {
+		PersistenceService.getBucket().store(buildHistory.getKey(), buildHistory).execute();
 		return Response.status(204).build();
 	}
 	   
+	//TODO: potentially add method to retrieve list of BuildTests 
     
 }

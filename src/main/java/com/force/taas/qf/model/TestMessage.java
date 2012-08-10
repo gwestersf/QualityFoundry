@@ -22,14 +22,14 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  */
 @XmlRootElement
-public class TestMessage {
+public class TestMessage implements QualityFoundryObject {
 	public String testResultID; 
 	public MessageTypeEnum type;
 	public String message; 
 	private String key; 
 	
 	public TestMessage() {
-		key = String.valueOf(hashCode()); 
+
 	}
 
 	public TestMessage(String testResultID, MessageTypeEnum type, String message) {
@@ -70,6 +70,9 @@ public class TestMessage {
 	
 	@XmlElement
 	public String getKey() {
+		if(key == null) {
+			key = String.valueOf(hashCode()); 
+		}
 		return key;
 	}
 }

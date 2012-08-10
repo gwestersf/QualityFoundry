@@ -13,7 +13,7 @@
 // limitations under the License.
 package com.force.taas.qf.model;
 
-import java.util.Arrays;
+import java.util.LinkedHashSet;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -24,27 +24,34 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  */
 @XmlRootElement
-public class BuildHistory {
-	public String appName;
-	public String[] buildTestKeys;
-	private String key; 
+public class BuildHistory implements QualityFoundryObject {
+	public String applicationName;
+	public LinkedHashSet<String> buildTestKeys;
 	
-	public BuildHistory() { 
-		key = String.valueOf(hashCode()); 
+	public BuildHistory() {
+		
 	}
 
-	public BuildHistory(String appName, String[] buildTestKeys) {
-		this.appName = appName;
+	public BuildHistory(String applicationName, LinkedHashSet<String> buildTestKeys) {
+		this.applicationName = applicationName;
 		this.buildTestKeys = buildTestKeys;
-		key = String.valueOf(hashCode()); 
 	}
-
+	
+	public boolean addBuildTest(String buildTestKey) {
+		if(buildTestKeys == null) {
+			buildTestKeys = new LinkedHashSet<String>();
+		}
+		return buildTestKeys.add(buildTestKey);
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((appName == null) ? 0 : appName.hashCode());
-		result = prime * result + Arrays.hashCode(buildTestKeys);
+		result = prime * result
+				+ ((applicationName == null) ? 0 : applicationName.hashCode());
+		result = prime * result
+				+ ((buildTestKeys == null) ? 0 : buildTestKeys.hashCode());
 		return result;
 	}
 
@@ -57,18 +64,21 @@ public class BuildHistory {
 		if (getClass() != obj.getClass())
 			return false;
 		BuildHistory other = (BuildHistory) obj;
-		if (appName == null) {
-			if (other.appName != null)
+		if (applicationName == null) {
+			if (other.applicationName != null)
 				return false;
-		} else if (!appName.equals(other.appName))
+		} else if (!applicationName.equals(other.applicationName))
 			return false;
-		if (!Arrays.equals(buildTestKeys, other.buildTestKeys))
+		if (buildTestKeys == null) {
+			if (other.buildTestKeys != null)
+				return false;
+		} else if (!buildTestKeys.equals(other.buildTestKeys))
 			return false;
 		return true;
 	}
-	
+
 	@XmlElement
 	public String getKey() {
-		return key;
+		return applicationName;
 	}
 }

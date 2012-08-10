@@ -13,6 +13,9 @@
 // limitations under the License.
 package com.force.taas.qf.resource;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
@@ -23,6 +26,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.force.taas.qf.PersistenceService;
+import com.force.taas.qf.model.BuildHistory;
+import com.force.taas.qf.model.BuildTest;
 import com.force.taas.qf.model.TestInventory;
 import com.force.taas.qf.model.TestResult;
 import com.force.taas.qf.model.TestMessage;
@@ -34,38 +39,28 @@ import com.force.taas.qf.model.TestMessage;
  *
  */
 @Path("/testresults")
-public class TestResultResource {
+public class TestResultResource implements QualityFoundryResource {
 	
 	@GET
 	@Produces({MediaType.APPLICATION_JSON})
-	@PathParam("{testResultKey}")
-	public Object[] doGetTestResult(@PathParam("testResultKey") String testResultKey) throws Exception {
-	    TestResult thisTestResult =  PersistenceService.getBucket().fetch(testResultKey, TestResult.class).execute();
-	    TestInventory parentTest = getParentTest(thisTestResult);
-	    TestMessage[] testMessages = getTestMessage(thisTestResult); 
-	    Object[] completeTestResult = new Object[3];
-	    completeTestResult[0] = thisTestResult;
-	    completeTestResult[1] = testMessages;
-	    completeTestResult[2] = parentTest; 
-	    	
-	    return completeTestResult; 
-	}
-	
-
-	private TestInventory getParentTest(TestResult thisTestResult) throws Exception {
-	    return (TestInventory) PersistenceService.getBucket().fetch(thisTestResult.testInventoryID).execute();
-	}
-	
-	private TestMessage[] getTestMessage(TestResult thisTestResult) throws Exception {
-		int length = thisTestResult.testMessageKeys.length; 
-		TestMessage[] messages = new TestMessage[length]; 
+	@PathParam("{buildTestID}")
+	public List<TestResult> doGet(@PathParam("buildTestID") String buildTestId) throws Exception {
+		BuildTest testRun = PersistenceService.getBucket().fetch(buildTestId, BuildTest.class).execute();
 		
-		for(int i = 0; i<length; i++){
-			messages[i] = (TestMessage) PersistenceService.getBucket().fetch(thisTestResult.testMessageKeys[i]).execute();
+		List<TestResult> testResults = new ArrayList<TestResult>();
+		for(String key : testRun.testResultKeys) {
+			TestResult testResult = PersistenceService.getBucket().fetch(key, TestResult.class).execute();
+			
+			// we need to send back the test name
+			TestInventory testInfo = PersistenceService.getBucket().fetch(key, TestInventory.class).execute();
+			testResult.setSimpleName(testInfo.packageName + "." + testInfo.className + "." + testInfo.testName);
+			
+			testResult.testInventoryID = null;  // truncate unneeded data
+			testResult.buildTestID = null;	// truncate unneeded data
+			testResults.add(testResult);
 		}
-	    return messages;
+		return testResults;
 	}
-	
 	    
 	@PUT
 	@Consumes({MediaType.APPLICATION_JSON})

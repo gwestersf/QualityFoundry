@@ -32,12 +32,12 @@ import com.force.taas.qf.model.TestMessage;
  *
  */
 @Path("/testmessages")
-public class TestMessageResource {
+public class TestMessageResource implements QualityFoundryResource {
     	   
 	@GET
 	@Produces({MediaType.APPLICATION_JSON})
 	@PathParam("{testMessageKey}")
-	public TestMessage doGetTestMessage(@PathParam("testMessageKey") String testMessageKey) throws Exception {
+	public TestMessage doGet(@PathParam("testMessageKey") String testMessageKey) throws Exception {
 		return PersistenceService.getBucket().fetch(testMessageKey, TestMessage.class).execute();
 	}
 	
