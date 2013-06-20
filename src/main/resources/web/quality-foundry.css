@@ -1,0 +1,95 @@
+.qf-page-background {
+	background-repeat:no-repeat; 
+	background-attachment:fixed;
+	
+	background-image: -ms-linear-gradient(top, #FFFFFF 0%, #aaccdd 100%); /* IE10 Consumer Preview */ 
+	background-image: -moz-linear-gradient(top, #FFFFFF 0%, #aaccdd 100%); /* Mozilla Firefox */ 
+	background-image: -o-linear-gradient(top, #FFFFFF 0%, #aaccdd 100%); /* Opera */
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FFFFFF), color-stop(1, #aaccdd)); /* Webkit (Safari/Chrome 10) */ 
+	background-image: -webkit-linear-gradient(top, #FFFFFF 0%, #aaccdd 100%); /* Webkit (Chrome 11+) */ 
+	background-image: linear-gradient(to bottom, #FFFFFF 0%, #aaccdd 100%); /* W3C Markup, IE10 Release Preview */ 
+}
+
+.qf-header {
+	height:80px;
+	
+	padding-left:20px; 
+	margin-bottom:20px; 
+	margin-left:20px; 
+	margin-right:20px; 
+	
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+}
+
+.qf-logo{
+	margin-left:20px; 
+	margin-bottom:0px;
+}
+
+.qf-search{
+	float:right; 
+	padding-top:2%;
+}
+
+.qf-container {
+	/*size of stripes*/
+	background-size: 2px 2px; 	
+	-webkit-background-size: 2px 2px;
+	-moz-background-size: 2px 2px;
+	
+	/* background color and stripes*/
+	background-color: rgba(209, 209, 209, .6);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(.5, rgba(255, 255, 255, .2)), color-stop(.5, transparent), to(transparent));
+	background-image: -moz-linear-gradient(rgba(255, 255, 255, .2) 50%, transparent 50%, transparent);
+	background-image: -o-linear-gradient(rgba(255, 255, 255, .2) 50%, transparent 50%, transparent);
+	background-image: linear-gradient(rgba(255, 255, 255, .2) 50%, transparent 50%, transparent);
+	
+	margin-left:15px; 
+	margin-right:15px; 
+	margin-bottom:40px; 
+	padding-left:0px; 
+	padding-top:0px; 
+	padding-right:0px;
+	
+	-moz-border-radius: 15px;
+	border-radius:15px; 
+			
+	-moz-box-shadow: 0px 1px 5px 5px #888;
+	-webkit-box-shadow: 0px 1px 5px 5px #888;
+	box-shadow: 0px 1px 5px 5px #888;
+}
+
+.qf-content{
+	background-color:white; 
+	padding:15px; 
+	margin-right:0px; 
+	border-top-right-radius:15px; 
+	border-bottom-right-radius:15px; 
+	box-shadow: inset 3px 0px 3px #888;
+}
+
+.qf-content-nosidebar{
+	background-color:white; 
+	padding:15px; 
+	margin:0px; 
+	border-radius:15px; 
+	border-radius:15px;
+}
+
+.qf-sidebar {
+	background-color:transparent; 
+	
+	margin-top:0px; 
+	margin-bottom:0px;
+	
+	padding-bottom:20px;
+	padding-top:20px; 
+	padding-left:20px; 
+	padding-right:0px; 	
+}
+
+.qf-accordion-item {
+	outline: 0 none; 
+	-moz-outline: 0 none;
+}

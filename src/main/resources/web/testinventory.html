@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Test Page</title>
+
+
+	
+	
+	
+</head>
+<body>
+	<script src="http://github.com/janl/mustache.js/raw/master/mustache.js"></script>
+	<script type="text/javascript" src="scripts/jquery-1.7.2.min.js"></script> 
+	<script>
+		var person = {firstName: "Brianna", lastName: "Birman"}; 
+		var template = "<h1>{{firstName}} {{lastName}}</h1>"; 
+
+		var html = Mustache.to_html(template, person); 
+		document.write(html); 
+		//$('#sampleArea').html(html);
+	</script>
+	
+	<div id = "sampleArea">
+	</div>
+
+	
+</body>
+</html>

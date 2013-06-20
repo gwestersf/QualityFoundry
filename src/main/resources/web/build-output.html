@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+
+<html style="">
+<head>
+	<title>Build Output</title>
+  
+	<link rel="stylesheet" href="scripts/bootstrap/css/bootstrap.css"/>
+	
+	<!-- For Accordion -->
+	<script type="text/javascript" src="scripts/jquery-1.7.2.min.js"></script> 
+	<script type="text/javascript" src="scripts/jquery-ui-1.8.21.custom/js/jquery-ui-1.8.21.custom.min.js"></script> 
+	<script >
+		$(function() {			
+			$("#accordion").accordion({
+				event : "mouseover",
+				active: false, 	
+				fillspace: true	
+			});
+		});
+	</script>
+	
+	<!-- Typeahead -->
+	<script type="text/javascript" src="scripts/bootstrap/bootstrap-typeahead.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+	    	var alCities = ['example package', 'test name', 'class name', 'john doveloper', 'John doveloper'].sort();
+	        $('#global-search').typeahead({source: alCities, items:5});
+		});
+	</script>
+	
+	<!-- Select text-->
+	<script type="text/javascript">
+	    function selectText() {
+	        if (document.selection) {
+	        	var range = document.body.createTextRange();
+	            range.moveToElementText(document.getElementById('output-text'));
+	        	range.select();
+	        }
+	        else if (window.getSelection) {
+	        	var range = document.createRange();
+	        	range.selectNode(document.getElementById('output-text'));
+	        	window.getSelection().addRange(range);	
+	        }
+	    }
+	    </script>
+</head>
+
+<body style="background-image:-webkit-linear-gradient(top, #FFFFFF 0%, #aaccdd 100%); background-repeat: no-repeat; background-attachment: fixed">
+	<div style="background-color:whiteZ; 
+				padding-left:20px; 
+				margin-bottom:20px; margin-left:20px; margin-right:20px; 
+				-moz-border-radius: 15px;
+				height:80px">
+
+		<img src="imgs/logo.png" height="80" width="140" style="margin-left:20px; margin-bottom:0px"/>
+		
+		<form class="form-search" style="float:right; padding-top:2%">
+	  		<input type="text" id="global-search" data-provide="typeahead" class="search-query" placeholder="Search all">
+	  		<button type="submit" class="btn"><i class="icon-search"></i> Search</button>
+		</form>
+	</div>
+	<!--   #aaccdd -->
+	<div class="container-fluid"
+		style="background-color: rgba(209, 209, 209, .6);
+				background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(.5, rgba(255, 255, 255, .2)), color-stop(.5, transparent), to(transparent));
+				background-size: 2px 2px;
+				margin-left:15px; margin-right:15px; margin-bottom:40px; 
+				padding-left:0px; padding-top:0px; padding-right:0px;
+				border-radius:15px; 		
+				-moz-box-shadow: 10px 10px 5px #615A5A;
+				-webkit-box-shadow: 10px 10px 5px #615A5A;
+				box-shadow: 0px 1px 5px 5px #888">
+  		
+		<div class="row-fluid">
+
+			<div class="span2" id="accordion2" style="background-color:transparent; margin-top:0px; margin-bottom:0px; padding-bottom:50px;
+				padding-bottom: 20px; padding-top: 20px; padding-left: 20px; padding-right:0px; 
+				border-bottom-left-radius: 15px; 
+				border-top-left-radius: 15px;
+				border-top-right-radius: 0px;
+				border-bottom-right-radius: 0px">
+      			<!--Sidebar content-->
+
+				<h3> <a href="#">Test Inventory</a> </h3> 
+				<div id="accordion">
+
+				<!-- <#assign runs = ${runs}> 
+					<#list runs as run> 
+				
+					<h3 style="outline: 0 none; -moz-outline: 0 none"><a href="#">${run.name}</a> 
+						<#if run.status == "running"> <img src="loading-snake.gif" alt="loading icon" style="padding-bottom: 6px; vertical-align:middle"/> </#if> 
+					</h3>
+					<div>
+						<#if run.status == "running">
+							&nbsp;&nbsp;<strong>Start Time</strong> ${run.startTime} <br/>
+							&nbsp;&nbsp;<em>Generating Results...</em><br/>
+							
+						<#else>
+							&nbsp;&nbsp;<strong>Start Time</strong> ${run.startTime} <br/>
+							&nbsp;&nbsp;<strong>End Time</strong> ${run.endTime} <br/>
+
+							&nbsp;&nbsp;<i class="icon-chevron-right"></i> <a href="#">Overview</a> <br/>
+							&nbsp;&nbsp;<i class="icon-chevron-right"></i> <a href="#">Test Results</a> 
+								<#if run.failedTests == 0> <span class="badge badge-success"> ${run.failedTests}</span>
+								<#else> <span class="badge badge-important"> ${run.failedTests}</span>
+								</#if><br/>
+							&nbsp;&nbsp;<i class="icon-chevron-right"></i> <a href="#">Code Coverage</a> 
+								<#if run.coverage > 90> <span class="badge badge-success"> ${run.coverage}%</span>
+								<#else> <span class="badge badge-important"> ${run.coverage}%</span>
+								</#if><br/>		
+						</#if>				
+					</div> -->
+					<!-- BEGIN: To delete once data is available-->
+					 <h3 style="outline: 0 none; -moz-outline: 0 none"> Run 2</h3> 
+					<div>
+						&nbsp;&nbsp;<strong>Start Time</strong> 10:30 21-03-2012 <br/>
+						&nbsp;&nbsp;<strong>End Time</strong> 20:30 21-03-2012 <br/>
+						<br/>
+						&nbsp;&nbsp;<i class="icon-chevron-right"></i> <a href="#">Build Output</a> <br/>
+						&nbsp;&nbsp; <span class="badge">6</span> <a href="#">Test Results</a>   <br/>
+						&nbsp;&nbsp; <span class="badge">6</span> <a href="#">Code Coverage</a> <br/>
+					</div>
+					<h3 style="outline: 0">Run 3 <img src="loading-snake.gif" alt="loading icon" style="padding-bottom: 6px; vertical-align:middle"/> </h3>
+					<div>
+						&nbsp;&nbsp;<strong>Start Time</strong> 10:30 21-03-2012 <br/>
+						&nbsp;&nbsp;<em>Generating Results...</em><br/>
+						
+					</div>
+					<h3 style="outline: 0">Run 4</h3>
+					<div>
+						&nbsp;&nbsp;<strong>Start Time</strong> 10:30 21-03-2012 <br/>
+						&nbsp;&nbsp;<strong>End Time</strong> 20:30 21-03-2012 <br/>
+
+						&nbsp;&nbsp;<i class="icon-chevron-right"></i> <a href="#">Build Output</a> <br/>
+						&nbsp;&nbsp;<i class="icon-chevron-right"></i> <a href="#">Test Results</a> <span class="badge badge-important">6</span><br/>
+						&nbsp;&nbsp;<i class="icon-chevron-right"></i> <a href="#">Code Coverage</a> <span class="badge badge-success">91%</span><br/>
+					</div>
+					<h3 style="outline: 0">Run 5</h3>
+					<div>
+						&nbsp;&nbsp;<strong>Start</strong> 10:30 21-03-2012 <br/>
+						&nbsp;&nbsp;<strong>End</strong> 20:30 21-03-2012 <br/>
+
+						&nbsp;&nbsp;<a href="#">Build Output</a> <br/>
+						&nbsp;&nbsp;<a href="#">Test Results</a> <span class="badge badge-important">6</span><br/>
+						&nbsp;&nbsp;<a href="#">Code Coverage</a> <span class="badge badge-success">91%</span><br/>
+					</div>
+					<h3 style="outline: 0">Run 6</h3>
+					<div>
+						&nbsp;&nbsp;<strong>Start Time</strong> 10:30 21-03-2012 <br/>
+						&nbsp;&nbsp;<strong>End Time</strong> 20:30 21-03-2012 <br/>
+
+						&nbsp;&nbsp;<i class="icon-chevron-right"></i> <a href="#">Build Output</a> <br/>
+						&nbsp;&nbsp;<i class="icon-chevron-right"></i> <a href="#">Test Results</a> <span class="badge badge-important">6</span><br/>
+						&nbsp;&nbsp;<i class="icon-chevron-right"></i> <a href="#">Code Coverage</a> <span class="badge badge-success">91%</span><br/>
+					</div>
+					<h3 style="outline: 0">Run 7</h3>
+					<div>
+						&nbsp;&nbsp;<strong>Start Time</strong> 10:30 21-03-2012 <br/>
+						&nbsp;&nbsp;<strong>End Time</strong> 20:30 21-03-2012 <br/>
+
+						&nbsp;&nbsp;<i class="icon-chevron-right"></i> <a href="#">Build Output</a> <br/>
+						&nbsp;&nbsp;<i class="icon-chevron-right"></i> <a href="#">Test Results</a> <span class="badge badge-important">6</span><br/>
+						&nbsp;&nbsp;<i class="icon-chevron-right"></i> <a href="#">Code Coverage</a> <span class="badge badge-success">91%</span><br/>
+					</div>
+					<!-- END: To delete once data is available-->
+				</div>
+    		</div>
+    
+    		<div class="span10" style="background-color:white; padding: 15px; margin-right:0px; border-top-right-radius:15px; border-bottom-right-radius:15px; box-shadow: inset 3px 0px 3px #888; " id="content">
+				<!--Body content-->
+    
+				<ul class="breadcrumb">
+					<li> 
+						${run.name}
+						<span class="divider">|</span>
+					</li>
+				 	<li class="active">Build Output</li>
+				</ul>
+
+      			<div class="page-header"> 
+					<h2> 
+						Build Output 
+						<small> 
+							<a href="download-test.txt" target="_blank">	
+							<button class="btn btn-small" style="float:right">
+			  					<i class="icon-download"></i>
+			 					output.txt
+							</button> 
+							</a>
+							<button class="btn btn-small" style="float:right" onclick="selectText()">
+			  					<i class="icon-align-justify"></i> 
+								Select all
+							</button>
+						<small>
+					</h2> 
+				</div>
+				
+				<blockquote>
+					<div id="output-text">
+      					${run.output}
+				 		9) - Deleting record id:001D000000JJDF7IAP 2011-07-15 14:00:33,719 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDF8IAP 2011-07-15 14:00:33,719 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDF9IAP 2011-07-15 14:00:33,720 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFAIA5 2011-07-15 14:00:33,720 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFBIA5 2011-07-15 14:00:33,720 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFCIA5 2011-07-15 14:00:33,720 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFDIA5 2011-07-15 14:00:33,720 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFEIA5 2011-07-15 14:00:33,720 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFFIA5 2011-07-15 14:00:33,720 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFGIA5 2011-07-15 14:00:33,720 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFHIA5 2011-07-15 14:00:33,720 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFIIA5 2011-07-15 14:00:33,721 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFJIA5 2011-07-15 14:00:33,721 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFKIA5 2011-07-15 14:00:33,721 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFLIA5 2011-07-15 14:00:33,721 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFMIA5 2011-07-15 14:00:33,721 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFNIA5 2011-07-15 14:00:33,721 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFOIA5 2011-07-15 14:00:33,721 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFPIA5 2011-07-15 14:00:33,721 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFQIA5 2011-07-15 14:00:33,721 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFRIA5 2011-07-15 14:00:33,721 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFSIA5 2011-07-15 14:00:33,722 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFTIA5 2011-07-15 14:00:33,722 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFUIA5 2011-07-15 14:00:33,722 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFVIA5 2011-07-15 14:00:33,722 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFWIA5 2011-07-15 14:00:33,722 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFXIA5 2011-07-15 14:00:33,722 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFYIA5 2011-07-15 14:00:33,722 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFZIA5 2011-07-15 14:00:33,722 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFaIAP 2011-07-15 14:00:33,722 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFbIAP 2011-07-15 14:00:33,722 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFcIAP 2011-07-15 14:00:33,723 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFdIAP 2011-07-15 14:00:33,723 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFeIAP 2011-07-15 14:00:33,723 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFfIAP 2011-07-15 14:00:33,723 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFgIAP 2011-07-15 14:00:33,723 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFhIAP 2011-07-15 14:00:33,723 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFiIAP 2011-07-15 14:00:33,723 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFjIAP 2011-07-15 14:00:33,723 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFkIAP 2011-07-15 14:00:33,723 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFlIAP 2011-07-15 14:00:33,723 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFmIAP 2011-07-15 14:00:33,724 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFnIAP 2011-07-15 14:00:33,724 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFoIAP 2011-07-15 14:00:33,724 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFpIAP 2011-07-15 14:00:34,385 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFqIAP 2011-07-15 14:00:34,385 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFrIAP 2011-07-15 14:00:34,385 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFsIAP 2011-07-15 14:00:34,385 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFtIAP 2011-07-15 14:00:34,386 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFuIAP 2011-07-15 14:00:34,386 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFvIAP 2011-07-15 14:00:34,386 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFwIAP 2011-07-15 14:00:34,386 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFxIAP 2011-07-15 14:00:34,386 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFyIAP 2011-07-15 14:00:34,387 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDFzIAP 2011-07-15 14:00:34,387 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDG0IAP 2011-07-15 14:00:34,387 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDG1IAP 2011-07-15 14:00:34,387 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDMUIA5 2011-07-15 14:00:34,387 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDMVIA5 2011-07-15 14:00:34,388 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDMWIA5 2011-07-15 14:00:34,388 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDMXIA5 2011-07-15 14:00:34,388 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDMYIA5 2011-07-15 14:00:34,388 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDMZIA5 2011-07-15 14:00:34,388 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDMaIAP 2011-07-15 14:00:34,389 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDMbIAP 2011-07-15 14:00:34,389 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDMcIAP 2011-07-15 14:00:34,389 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDMdIAP 2011-07-15 14:00:34,389 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDMeIAP 2011-07-15 14:00:34,389 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDMfIAP 2011-07-15 14:00:34,390 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDMgIAP 2011-07-15 14:00:34,390 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDMhIAP 2011-07-15 14:00:34,390 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDMiIAP 2011-07-15 14:00:34,390 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDMjIAP 2011-07-15 14:00:34,390 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDMkIAP 2011-07-15 14:00:34,391 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDMlIAP 2011-07-15 14:00:34,391 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDMmIAP 2011-07-15 14:00:34,391 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDMnIAP 2011-07-15 14:00:34,391 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDMoIAP 2011-07-15 14:00:34,392 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDMpIAP 2011-07-15 14:00:34,392 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDMqIAP 2011-07-15 14:00:34,392 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDMrIAP 2011-07-15 14:00:34,392 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDMsIAP 2011-07-15 14:00:34,392 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDMtIAP 2011-07-15 14:00:34,393 DEBUG [testMaximumBatchRowsDb] [testMaximumBatchRowsDb] [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDN0IAP 2011-07-15 14:00:34,394 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDN1IAP 2011-07-15 14:00:34,394 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDN2IAP 2011-07-15 14:00:34,394 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDOAIA5 2011-07-15 14:00:34,395 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDN3IAP 2011-07-15 14:00:34,395 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDN4IAP 2011-07-15 14:00:34,395 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDN5IAP 2011-07-15 14:00:34,395 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDN6IAP 2011-07-15 14:00:34,395 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDN7IAP 2011-07-15 14:00:34,396 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDN8IAP 2011-07-15 14:00:34,396 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDN9IAP 2011-07-15 14:00:34,396 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDNAIA5 2011-07-15 14:00:34,396 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDNBIA5 2011-07-15 14:00:34,396 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDNCIA5 2011-07-15 14:00:34,397 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDNDIA5 2011-07-15 14:00:34,397 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDNEIA5 2011-07-15 14:00:34,397 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDNFIA5 2011-07-15 14:00:34,397 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDNGIA5 2011-07-15 14:00:34,397 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDNHIA5 2011-07-15 14:00:34,398 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDNIIA5 2011-07-15 14:00:34,398 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDNJIA5 2011-07-15 14:00:34,398 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDNKIA5 2011-07-15 14:00:34,398 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDNLIA5 2011-07-15 14:00:34,398 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDNMIA5 2011-07-15 14:00:34,399 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDNNIA5 2011-07-15 14:00:34,399 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDNOIA5 2011-07-15 14:00:34,399 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDNPIA5 2011-07-15 14:00:34,399 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDOBIA5 2011-07-15 14:00:34,400 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDNQIA5 2011-07-15 14:00:34,400 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDNRIA5 2011-07-15 14:00:34,400 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDNSIA5 2011-07-15 14:00:34,400 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDNTIA5 2011-07-15 14:00:34,400 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDOCIA5 2011-07-15 14:00:34,401 DEBUG [testMaximumBatchRowsDb] process.ProcessTestBase deleteSfdcRecords (ProcessTestBase.java:539) - Deleting record id:001D000000JJDODIA5 2011-07-15 14:00:34,401 DEBUG
+					</div>
+				</blockquote>
+				
+
+    		</div>
+		</div>
+	</div>
+</body>
+</html>

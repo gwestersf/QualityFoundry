@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+
+<html style="">
+<head>
+	<title>Test Inventory</title>
+  
+	<link rel="stylesheet" href="scripts/bootstrap/css/bootstrap.css"/>
+	<link rel="stylesheet" href="quality-foundry.css" type="text/css"/>
+	
+	<!-- For Accordion -->
+	<script type="text/javascript" src="scripts/jquery-1.7.2.min.js"></script> 
+	<script type="text/javascript" src="scripts/jquery-ui-1.8.21.custom/js/jquery-ui-1.8.21.custom.min.js"></script> 
+	<script >
+		$(function() {			
+			$("#accordion").accordion({
+				event : "mouseover",
+				active: false, 	
+				fillspace: true	
+			});
+		
+		});
+	</script>
+	<!-- DataTables -->
+	<link rel="stylesheet" type="text/css" href="scripts/DataTables-1.9.1/DT_bootstrap.css"/>
+	<script type="text/javascript" src="scripts/DataTables-1.9.1/media/js/jquery.dataTables.js"></script>
+	<script type="text/javascript" src="scripts/DataTables-1.9.1/DT_bootstrap.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		/* Default class modification */
+		$.extend( $.fn.dataTableExt.oStdClasses, {
+			"sSortAsc": "header headerSortDown",
+			"sSortDesc": "header headerSortUp",
+			"sSortable": "header"
+		} );
+		$(document).ready(function() {
+			$('#failedTests').dataTable( {"bPaginate": false});
+			$('#flappers').dataTable( {"bPaginate": false});
+			$('#allTests').dataTable( {"bPaginate": false});
+			$('.accordion2').click(function() {
+						$(this).next().toggle();
+						return false;
+					}).next().hide();
+		} );
+	</script>
+	<!-- Typeahead -->
+	<script type="text/javascript" src="scripts/bootstrap/bootstrap-typeahead.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+	    	var alCities = ['example package', 'test name', 'class name', 'john doveloper', 'John doveloper'].sort();
+	        $('#global-search').typeahead({source: alCities, items:5});
+		});
+	</script>
+	<!-- Collapse -->
+	<script type="text/javascript" src="scripts/bootstrap/bootstrap-collapse.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+	    	var alCities = ['example package', 'test name', 'class name', 'john doveloper', 'John doveloper'].sort();
+	        $('#accordion2').typeahead({source: alCities, items:5});
+		});
+	</script>
+</head>
+
+<body class="qf-page-background">
+	<div class="qf-header">
+
+		<img src="imgs/logo.png" class="qf-logo" height="80" width="140"/>
+		
+		<form class="form-search qf-search">
+	  		<input type="text" id="global-search" data-provide="typeahead" class="search-query" placeholder="Search all">
+	  		<button type="submit" class="btn"> <i class="icon-search"></i> Search</button>
+		</form>
+	</div>
+	<!--   #aaccdd  #888 #615A5A-->
+	<div class="container-fluid qf-container">
+  		
+		<div class="row-fluid">
+
+			<div class="span2 qf-sidebar">
+      			<!--Sidebar content-->
+
+				<h3> App Name </h3>
+				<br/>
+				<div id="accordion">
+					<h3 class="qf-accordion-item"><a href="#">Build 7 </a></h3> 
+					<div>
+						&nbsp;&nbsp;<strong>Triggered By</strong> Scheduled build <br/>
+						&nbsp;&nbsp;<strong>Owner</strong> gwester <br/>
+						&nbsp;&nbsp;<strong>Start Time</strong> 10:30 21-03-2012 <br/>
+						&nbsp;&nbsp;<strong>End Time</strong> 20:30 21-03-2012 <br/>
+					</div> 
+					<h3 class="qf-accordion-item"><a href="#">Build 6</a></h3> 
+					<div>
+						&nbsp;&nbsp;<strong>Triggered By</strong> Scheduled build <br/>
+						&nbsp;&nbsp;<strong>Owner</strong> gwester <br/>
+						&nbsp;&nbsp;<strong>Start Time</strong> 10:30 21-03-2012 <br/>
+						&nbsp;&nbsp;<strong>End Time</strong> 20:30 21-03-2012 <br/>
+						
+					</div>
+					<h3 class="qf-accordion-item"><a href="#">Build 5 </a><img src="loading-snake.gif" alt="loading icon" style="padding-bottom: 6px; vertical-align:middle"/> </h3>
+					<div>
+						&nbsp;&nbsp;<strong>Triggered By</strong> Scheduled build <br/>
+						&nbsp;&nbsp;<strong>Owner</strong> gwester <br/>
+						&nbsp;&nbsp;<strong>Start Time</strong> 10:30 21-03-2012 <br/>
+						&nbsp;&nbsp;<em>Generating Results...</em><br/>
+					</div>
+					<h3 class="qf-accordion-item"><a href="#">Build 4</a></h3>
+					<div>
+						&nbsp;&nbsp;<strong>Triggered By</strong> Scheduled build <br/>
+						&nbsp;&nbsp;<strong>Owner</strong> gwester <br/>
+						&nbsp;&nbsp;<strong>Start Time</strong> 10:30 21-03-2012 <br/>
+						&nbsp;&nbsp;<strong>End Time</strong> 20:30 21-03-2012 <br/>
+					</div>
+					<h3 class="qf-accordion-item"><a href="#">Build 3</a></h3>
+					<div>
+						&nbsp;&nbsp;<strong>Triggered By</strong> Scheduled build <br/>
+						&nbsp;&nbsp;<strong>Owner</strong> gwester <br/>
+						&nbsp;&nbsp;<strong>Start</strong> 10:30 21-03-2012 <br/>
+						&nbsp;&nbsp;<strong>End</strong> 20:30 21-03-2012 <br/>
+					</div>
+					<h3 class="qf-accordion-item"><a href="#">Build 2</a></h3>
+					<div>
+						&nbsp;&nbsp;<strong>Triggered By</strong> Scheduled build <br/>
+						&nbsp;&nbsp;<strong>Owner</strong> gwester <br/>
+						&nbsp;&nbsp;<strong>Start Time</strong> 10:30 21-03-2012 <br/>
+						&nbsp;&nbsp;<strong>End Time</strong> 20:30 21-03-2012 <br/>
+					</div>
+					<h3 class="qf-accordion-item"><a href="#">Build 1</a></h3>
+					<div>
+						&nbsp;&nbsp;<strong>Triggered By</strong> Scheduled build <br/>
+						&nbsp;&nbsp;<strong>Owner</strong> gwester <br/>
+						&nbsp;&nbsp;<strong>Start Time</strong> 10:30 21-03-2012 <br/>
+						&nbsp;&nbsp;<strong>End Time</strong> 20:30 21-03-2012 <br/>
+					</div>
+				</div>
+    		</div>
+    
+    		<div class="span10 qf-content" id="content">
+				<!--Body content-->
+    
+				<ul class="breadcrumb">
+					<li>
+						${app.name}
+						<span class="divider">|</span>
+					</li>
+					<li>
+						${run.name}
+						<span class="divider">|</span>
+					</li>
+						
+				 	<li class="active">Test Results</li>
+				</ul>
+				
+				
+				
+				<div id="accordion2">
+				    <h3><a href="#">First header</a></h3>
+				    <div>First content</div>
+				    <h3><a href="#">Second header</a></h3>
+				    <div>Second content</div>
+				</div>
+				
+				
+				
+				
+      			<div class="page-header"> <h2> App Name Test Inventory <small>Select desired tests and start a new build </small></h2> </div>
+					          <div class="accordion" id="accordion2">
+					            <div class="accordion-group">
+					              <div class="accordion-heading">
+									
+									
+											
+									<input type="checkbox" id="inlineCheckbox1" value="option1">
+					                <a class="accordion-toggle" data-toggle="collapse" href="#collapseOne">
+					                  
+										Collapsible Group Item #1
+					                </a>
+					              </div>
+					              <div id="collapseOne" class="accordion-body collapse">
+					                <div class="accordion-inner">
+					                  CONTENT 1
+					                </div>
+					              </div>
+					            </div>
+					            <div class="accordion-group">
+					              <div class="accordion-heading">
+					                <a class="accordion-toggle" data-toggle="collapse" href="#collapseTwo">
+					                  Collapsible Group Item #2
+					                </a>
+					              </div>
+					              <div id="collapseTwo" class="accordion-body collapse">
+					                <div class="accordion-inner">
+					                  CONTENT 2
+					                </div>
+					              </div>
+					            </div>
+					            <div class="accordion-group">
+					              <div class="accordion-heading">
+					                <a class="accordion-toggle" data-toggle="collapse" href="#collapseThree">
+					                  Collapsible Group Item #3
+					                </a>
+					              </div>
+					              <div id="collapseThree" class="accordion-body collapse">
+					                <div class="accordion-inner">
+					                  CONTENT 3
+					                </div>
+					              </div>
+					            </div>
+					          </div>
+
+		</div>
+	</div>
+</body>
+</html>

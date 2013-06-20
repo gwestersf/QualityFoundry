@@ -1,0 +1,517 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+
+<html style="">
+<head>
+	<title>Test Results</title>
+  
+	<link rel="stylesheet" href="scripts/bootstrap/css/bootstrap.css"/>
+	<link rel="stylesheet" href="quality-foundry.css" type="text/css"/>
+	
+	<!-- For Accordion -->
+	<script type="text/javascript" src="scripts/jquery-1.7.2.min.js"></script> 
+	<script type="text/javascript" src="scripts/jquery-ui-1.8.21.custom/js/jquery-ui-1.8.21.custom.min.js"></script> 
+	<script >
+		$(function() {			
+			$("#accordion").accordion({
+				event : "mouseover",
+				active: false, 	
+				fillspace: true	
+			});
+		});
+	</script>
+	<!-- DataTables -->
+	<link rel="stylesheet" type="text/css" href="scripts/DataTables-1.9.1/DT_bootstrap.css"/>
+	<script type="text/javascript" src="scripts/DataTables-1.9.1/media/js/jquery.dataTables.js"></script>
+	<script type="text/javascript" src="scripts/DataTables-1.9.1/DT_bootstrap.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		/* Default class modification */
+		$.extend( $.fn.dataTableExt.oStdClasses, {
+			"sSortAsc": "header headerSortDown",
+			"sSortDesc": "header headerSortUp",
+			"sSortable": "header"
+		} );
+		$(document).ready(function() {
+			$('#failedTests').dataTable( {"bPaginate": false});
+			$('#flappers').dataTable( {"bPaginate": false});
+			$('#allTests').dataTable( {"bPaginate": false});
+		} );
+	</script>
+	<!-- Typeahead -->
+	<script type="text/javascript" src="scripts/bootstrap/bootstrap-typeahead.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+	    	var alCities = ['example package', 'test name', 'class name', 'john doveloper', 'John doveloper'].sort();
+	        $('#global-search').typeahead({source: alCities, items:5});
+		});
+	</script>
+</head>
+
+<body class="qf-page-background">
+	<div class="qf-header">
+
+		<img src="imgs/logo.png" class="qf-logo" height="80" width="140"/>
+		
+		<form class="form-search qf-search">
+	  		<input type="text" id="global-search" data-provide="typeahead" class="search-query" placeholder="Search all">
+	  		<button type="submit" class="btn"> <i class="icon-search"></i> Search</button>
+		</form>
+	</div>
+	<!--   #aaccdd  #888 #615A5A-->
+	<div class="container-fluid qf-container">
+  		
+		<div class="row-fluid">
+
+			<div class="span2 qf-sidebar">
+      			<!--Sidebar content-->
+
+				<h3> App Name 
+				<a class="btn btn-mini btn-info" style="text-align:center">  	
+					<i class="icon-plus-sign icon-white"></i> New build
+				</a></h3>
+				<br/>
+				<div id="accordion">
+
+				<!-- <#assign runs = ${runs}> 
+					<#list runs as run> 
+				
+					<h3 class="qf-accordion-item"><a href="#">${run.name}</a> 
+						<#if run.status == "running"> <img src="loading-snake.gif" alt="loading icon" style="padding-bottom: 6px; vertical-align:middle"/> </#if> 
+					</h3>
+					<div>
+						<#if run.status == "running">
+							&nbsp;&nbsp;<strong>Start Time</strong> ${run.startTime} <br/>
+							&nbsp;&nbsp;<em>Generating Results...</em><br/>
+							
+						<#else>
+							&nbsp;&nbsp;<strong>Start Time</strong> ${run.startTime} <br/>
+							&nbsp;&nbsp;<strong>End Time</strong> ${run.endTime} <br/>
+
+							&nbsp;&nbsp;<i class="icon-chevron-right"></i> <a href="#">Overview</a> <br/>
+							&nbsp;&nbsp;<i class="icon-chevron-right"></i> <a href="#">Test Results</a> 
+								<#if run.failedTests == 0> <span class="badge badge-success"> ${run.failedTests}</span>
+								<#else> <span class="badge badge-important"> ${run.failedTests}</span>
+								</#if><br/>
+							&nbsp;&nbsp;<i class="icon-chevron-right"></i> <a href="#">Code Coverage</a> 
+								<#if run.coverage > 90> <span class="badge badge-success"> ${run.coverage}%</span>
+								<#else> <span class="badge badge-important"> ${run.coverage}%</span>
+								</#if><br/>		
+						</#if>				
+					</div> -->
+					<!-- BEGIN: To delete once data is available-->
+					<h3 class="qf-accordion-item"><a href="#">Build 7 </a></h3> 
+					<div>
+						&nbsp;&nbsp;<strong>Triggered By</strong> Scheduled build <br/>
+						&nbsp;&nbsp;<strong>Owner</strong> gwester <br/>
+						&nbsp;&nbsp;<strong>Start Time</strong> 10:30 21-03-2012 <br/>
+						&nbsp;&nbsp;<strong>End Time</strong> 20:30 21-03-2012 <br/>
+					</div> 
+					<h3 class="qf-accordion-item"><a href="#">Build 6</a></h3> 
+					<div>
+						&nbsp;&nbsp;<strong>Triggered By</strong> Scheduled build <br/>
+						&nbsp;&nbsp;<strong>Owner</strong> gwester <br/>
+						&nbsp;&nbsp;<strong>Start Time</strong> 10:30 21-03-2012 <br/>
+						&nbsp;&nbsp;<strong>End Time</strong> 20:30 21-03-2012 <br/>
+						
+					</div>
+					<h3 class="qf-accordion-item"><a href="#">Build 5 </a><img src="loading-snake.gif" alt="loading icon" style="padding-bottom: 6px; vertical-align:middle"/> </h3>
+					<div>
+						&nbsp;&nbsp;<strong>Triggered By</strong> Scheduled build <br/>
+						&nbsp;&nbsp;<strong>Owner</strong> gwester <br/>
+						&nbsp;&nbsp;<strong>Start Time</strong> 10:30 21-03-2012 <br/>
+						&nbsp;&nbsp;<em>Generating Results...</em><br/>
+					</div>
+					<h3 class="qf-accordion-item"><a href="#">Build 4</a></h3>
+					<div>
+						&nbsp;&nbsp;<strong>Triggered By</strong> Scheduled build <br/>
+						&nbsp;&nbsp;<strong>Owner</strong> gwester <br/>
+						&nbsp;&nbsp;<strong>Start Time</strong> 10:30 21-03-2012 <br/>
+						&nbsp;&nbsp;<strong>End Time</strong> 20:30 21-03-2012 <br/>
+					</div>
+					<h3 class="qf-accordion-item"><a href="#">Build 3</a></h3>
+					<div>
+						&nbsp;&nbsp;<strong>Triggered By</strong> Scheduled build <br/>
+						&nbsp;&nbsp;<strong>Owner</strong> gwester <br/>
+						&nbsp;&nbsp;<strong>Start</strong> 10:30 21-03-2012 <br/>
+						&nbsp;&nbsp;<strong>End</strong> 20:30 21-03-2012 <br/>
+					</div>
+					<h3 class="qf-accordion-item"><a href="#">Build 2</a></h3>
+					<div>
+						&nbsp;&nbsp;<strong>Triggered By</strong> Scheduled build <br/>
+						&nbsp;&nbsp;<strong>Owner</strong> gwester <br/>
+						&nbsp;&nbsp;<strong>Start Time</strong> 10:30 21-03-2012 <br/>
+						&nbsp;&nbsp;<strong>End Time</strong> 20:30 21-03-2012 <br/>
+					</div>
+					<h3 class="qf-accordion-item"><a href="#">Build 1</a></h3>
+					<div>
+						&nbsp;&nbsp;<strong>Triggered By</strong> Scheduled build <br/>
+						&nbsp;&nbsp;<strong>Owner</strong> gwester <br/>
+						&nbsp;&nbsp;<strong>Start Time</strong> 10:30 21-03-2012 <br/>
+						&nbsp;&nbsp;<strong>End Time</strong> 20:30 21-03-2012 <br/>
+					</div>
+					<!-- END: To delete once data is available-->
+				</div>
+    		</div>
+    
+    		<div class="span10 qf-content" id="content">
+				<!--Body content-->
+    
+				<ul class="breadcrumb">
+					<li>
+						${app.name}
+						<span class="divider">|</span>
+					</li>
+					<li>
+						${run.name}
+						<span class="divider">|</span>
+					</li>
+						
+				 	<li class="active">Test Results</li>
+				</ul>
+				
+				<div style="float:right">
+					Jump to <a href="#flappersHeader">Flappers</a> - <a href="#allTestsHeader">All Tests</a> 
+				</div>
+
+				<!-- <#assign testsFailed = ${testsFailed}> -->
+      			<div class="page-header"> <h2> Failed Tests </h2> </div>
+      				<table id="failedTests" class="table table-condensed table-bordered table-striped"> 
+            			<thead> 
+                			<tr> 
+								<th>Test Name</th> 
+                				<th>Package/Suite Name</th> 
+                				<th>Since Change</th> 
+                				<th>Bug/Failure Owner</th> 
+                				<th>Duration</th> 
+                			</tr> 
+            			</thead> 
+
+           	 			<tbody> 
+           	 				<!-- UNCOMMENT <#list testsFailed as testFail>
+           	 					<tr>
+									<td>${testFail.name}</td>
+           	 						<td>${testFail.package}</td>
+           	 						<td>${testFail.since_change}</td>
+           	 						<td>${testFail.failure_owner}</td>
+           	 						<td>${testFail.duration}</td>
+           	 					</tr>
+
+           	 				 </#list> -->
+
+							<!-- BEGIN: To delete once data is available-->
+								<tr>
+           	 						<td>test name</td>
+           	 						<td>test package</td>
+           	 						<td>test change</td>
+           	 						<td>test failure owner</td>
+           	 						<td>test duration</td>
+           	 					</tr>
+								<tr>
+           	 						<td>test name2</td>
+           	 						<td>test package4</td>
+           	 						<td>test change</td>
+           	 						<td>test failure owner</td>
+           	 						<td>test duration</td>
+           	 					</tr>
+								<tr>
+           	 						<td>test name3</td>
+           	 						<td>test package</td>
+           	 						<td>test change</td>
+           	 						<td>test failure owner</td>
+           	 						<td>test duration</td>
+           	 					</tr>
+								<tr>
+           	 						<td>test name4</td>
+           	 						<td>test package</td>
+           	 						<td>test change</td>
+           	 						<td>test failure owner</td>
+           	 						<td>test duration</td>
+           	 					</tr>
+								<tr>
+           	 						<td>test name5</td>
+           	 						<td>test package</td>
+           	 						<td>test change</td>
+           	 						<td>test failure owner</td>
+           	 						<td>test duration</td>
+           	 					</tr>
+								<tr>
+           	 						<td>test name6</td>
+           	 						<td>test package</td>
+           	 						<td>test change</td>
+           	 						<td>test failure owner</td>
+           	 						<td>test duration</td>
+           	 					</tr>
+								<tr>
+           	 						<td>test name7</td>
+           	 						<td>test package</td>
+           	 						<td>test change</td>
+           	 						<td>test failure owner</td>
+           	 						<td>test duration</td>
+           	 					</tr>
+								<tr>
+           	 						<td>test name8</td>
+           	 						<td>test package</td>
+           	 						<td>test change</td>
+           	 						<td>test failure owner</td>
+           	 						<td>test duration</td>
+           	 					</tr>
+								<tr>
+           	 						<td>test name9</td>
+           	 						<td>test package</td>
+           	 						<td>test change</td>
+           	 						<td>test failure owner</td>
+           	 						<td>test duration</td>
+           	 					</tr>
+								<tr>
+           	 						<td>test name10</td>
+           	 						<td>test package</td>
+           	 						<td>test change</td>
+           	 						<td>test failure owner</td>
+           	 						<td>test duration</td>
+           	 					</tr>
+								<tr>
+           	 						<td>test name11</td>
+           	 						<td>test package</td>
+           	 						<td>test change</td>
+           	 						<td>test failure owner</td>
+           	 						<td>test duration</td>
+           	 					</tr>
+							<!-- END: To delete once data is available-->
+            			</tbody> 
+    				</table>
+
+      			<!-- <#assign testsFlapping = ${testsFlapping}> -->
+				<a name="flappersHeader"></a>
+      			<div class="page-header"> <h2> Flappers </h2> </div>
+      				<table id="flappers" class="table table-condensed table-bordered table-striped"> 
+            			<thead> 
+                			<tr> 
+                				<th><abbr title="Flappiness" class="initialism">F</abbr></th>
+								<th>Test Name</th> 
+                				<th>Package/Suite Name</th> 
+                				<th>Since Change</th> 
+                				<th>Bug/Failure Owner</th> 
+                				<th>Duration</th> 
+                			</tr> 
+            			</thead> 
+
+           	 			<tbody> 
+           	 				<!-- UNCOMMENT <#list testsFlapping as testFlap>
+           	 					
+								{!IF(flapper.Flappiness__c > 39, 'background-color: #FF6666', IF(flapper.Flappiness__c > 19, 'background-color: #FFB366', IF(flapper.Flappiness__c > 9, 'background-color: #FFFF66', '')))}
+								<#if run.status == "running">
+									&nbsp;&nbsp;<strong>Start Time</strong> ${run.startTime} <br/>
+									&nbsp;&nbsp;<em>Generating Results...</em><br/>
+		
+								<tr>
+           	 						<td style="
+										<#if testFlap.flappiness > 39> background-color: #FF6666; 
+										<#elseif testFlap.flappiness > 19> background-color: #FFB366; 
+										<#elseif testFlap.flappiness > 9> background-color: #FFFF66 
+										</#if>">${testFlap.flappiness}</td>
+									<td style="
+										<#if testFlap.flappiness > 39> background-color: #FF6666; 
+										<#elseif testFlap.flappiness > 19> background-color: #FFB366; 
+										<#elseif testFlap.flappiness > 9> background-color: #FFFF66 
+										</#if>">${testFlap.name}</td>
+           	 						<td style="
+										<#if testFlap.flappiness > 39> background-color: #FF6666; 
+										<#elseif testFlap.flappiness > 19> background-color: #FFB366; 
+										<#elseif testFlap.flappiness > 9> background-color: #FFFF66 
+										</#if>">${testFlap.package}</td>
+           	 						<td style="
+										<#if testFlap.flappiness > 39> background-color: #FF6666; 
+										<#elseif testFlap.flappiness > 19> background-color: #FFB366; 
+										<#elseif testFlap.flappiness > 9> background-color: #FFFF66 
+										</#if>">${testFlap.since_change}</td>
+           	 						<td style="
+										<#if testFlap.flappiness > 39> background-color: #FF6666; 
+										<#elseif testFlap.flappiness > 19> background-color: #FFB366; 
+										<#elseif testFlap.flappiness > 9> background-color: #FFFF66 
+										</#if>">${testFlap.failure_owner}</td>
+           	 						<td style="
+										<#if testFlap.flappiness > 39> background-color: #FF6666; 
+										<#elseif testFlap.flappiness > 19> background-color: #FFB366; 
+										<#elseif testFlap.flappiness > 9> background-color: #FFFF66 
+										</#if>">${testFlap.duration}</td>
+           	 					</tr>
+
+           	 				 </#list> -->
+
+							<!-- BEGIN: To delete once data is available-->
+								<tr>
+									<td style="background-color: #FF6666">10</td>
+           	 						<td style="background-color: #FF6666">test name</td>
+           	 						<td style="background-color: #FF6666">test package</td>
+           	 						<td style="background-color: #FF6666">test change</td>
+           	 						<td style="background-color: #FF6666">test failure owner</td>
+           	 						<td style="background-color: #FF6666">test duration</td>
+           	 					</tr>
+								<tr>
+									<td style="background-color: #FFB366">9</td>
+           	 						<td style="background-color: #FFB366">test name2</td>
+           	 						<td style="background-color: #FFB366">test package4</td>
+           	 						<td style="background-color: #FFB366">test change</td>
+           	 						<td style="background-color: #FFB366">test failure owner</td>
+           	 						<td style="background-color: #FFB366">test duration</td>
+           	 					</tr>
+								<tr>
+									<td style="background-color: #FFFF66">8</td>
+           	 						<td style="background-color: #FFFF66">test name3</td>
+           	 						<td style="background-color: #FFFF66">test package</td>
+           	 						<td style="background-color: #FFFF66">test change</td>
+           	 						<td style="background-color: #FFFF66">test failure owner</td>
+           	 						<td style="background-color: #FFFF66">test duration</td>
+           	 					</tr>
+								<tr>
+									<td>7</td>
+           	 						<td>test name4</td>
+           	 						<td>test package</td>
+           	 						<td>test change</td>
+           	 						<td>test failure owner</td>
+           	 						<td>test duration</td>
+           	 					</tr>
+								<tr>
+									<td>6</td>
+           	 						<td>test name5</td>
+           	 						<td>test package</td>
+           	 						<td>test change</td>
+           	 						<td>test failure owner</td>
+           	 						<td>test duration</td>
+           	 					</tr>
+								<tr>
+									<td>5</td>
+           	 						<td>test name6</td>
+           	 						<td>test package</td>
+           	 						<td>test change</td>
+           	 						<td>test failure owner</td>
+           	 						<td>test duration</td>
+           	 					</tr>
+								<tr>
+									<td>4</td>
+           	 						<td>test name7</td>
+           	 						<td>test package</td>
+           	 						<td>test change</td>
+           	 						<td>test failure owner</td>
+           	 						<td>test duration</td>
+           	 					</tr>
+								<tr>
+									<td>3</td>
+           	 						<td>test name8</td>
+           	 						<td>test package</td>
+           	 						<td>test change</td>
+           	 						<td>test failure owner</td>
+           	 						<td>test duration</td>
+           	 					</tr>
+								<tr>
+									<td>2</td>
+           	 						<td>test name9</td>
+           	 						<td>test package</td>
+           	 						<td>test change</td>
+           	 						<td>test failure owner</td>
+           	 						<td>test duration</td>
+           	 					</tr>
+								<tr>
+									<td>1</td>
+           	 						<td>test name10</td>
+           	 						<td>test package</td>
+           	 						<td>test change</td>
+           	 						<td>test failure owner</td>
+           	 						<td>test duration</td>
+           	 					</tr>
+								<tr>
+									<td>0</td>
+           	 						<td>test name11</td>
+           	 						<td>test package</td>
+           	 						<td>test change</td>
+           	 						<td>test failure owner</td>
+           	 						<td>test duration</td>
+           	 					</tr>
+							<!-- END: To delete once data is available-->
+            			</tbody> 
+    				</table> 
+
+					<!-- <#assign testsPackages = ${testsPackages}> -->
+					<a name="allTestsHeader"></a>
+					<div class="page-header"> <h2> All Tests <small>All tests sorted by package </small></h2> </div>
+	      				<table id="allTests" class="table table-condensed table-bordered table-striped"> 
+	            			<thead> 
+	                			<tr> 
+									<th>Package Name</th> 
+	                				<th>Failed</th> 
+	                				<th>Skipped</th> 
+	                				<th>Passed</th> 
+	                				<th>Total</th> 
+	                			</tr> 
+	            			</thead> 
+
+	           	 			<tbody> 
+	           	 				<!-- UNCOMMENT <#list testsPackages as testPackage>
+	           	 					<tr>
+										<td>${testPackage.name}</td>
+	           	 						<td>${testPackage.failed}</td>
+	           	 						<td>${testPackage.skipped}</td>
+	           	 						<td>${testPackage.passed}</td>
+	           	 						<td>${testPackage.total}</td>
+	           	 					</tr>
+
+	           	 				 </#list> -->
+
+								<!-- BEGIN: To delete once data is available-->
+									<tr>
+	           	 						<td>package name</td>
+	           	 						<td>1</td>
+	           	 						<td>1</td>
+	           	 						<td>1</td>
+	           	 						<td>3</td>
+	           	 					</tr>
+									<tr>
+	           	 						<td>package name3</td>
+	           	 						<td>5</td>
+	           	 						<td>6</td>
+	           	 						<td>11</td>
+	           	 						<td>22</td>
+	           	 					</tr>
+									<tr>
+	           	 						<td>package name4</td>
+	           	 						<td>7</td>
+	           	 						<td>10</td>
+	           	 						<td>3</td>
+	           	 						<td>20</td>
+	           	 					</tr>
+									<tr>
+	           	 						<td>package name5</td>
+	           	 						<td>1</td>
+	           	 						<td>3</td>
+	           	 						<td>2</td>
+	           	 						<td>6</td>
+	           	 					</tr>
+									<tr>
+	           	 						<td>package name6</td>
+	           	 						<td>3</td>
+	           	 						<td>4</td>
+	           	 						<td>3</td>
+	           	 						<td>10</td>
+	           	 					</tr>
+									<tr>
+	           	 						<td>package name7</td>
+	           	 						<td>0</td>
+	           	 						<td>3</td>
+	           	 						<td>5</td>
+	           	 						<td>8</td>
+	           	 					</tr>
+									<tr>
+	           	 						<td>package name8</td>
+	           	 						<td>2</td>
+	           	 						<td>4</td>
+	           	 						<td>6</td>
+	           	 						<td>12</td>
+	           	 					</tr>
+								<!-- END: To delete once data is available-->
+	            			</tbody> 
+	    				</table>
+    		</div>
+		</div>
+	</div>
+</body>
+</html>
